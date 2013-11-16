@@ -1,0 +1,33 @@
+
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDB", "MongoDB\MongoDB.csproj", "{331D7267-E279-467B-8F14-3DACD45AB394}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionalTests", "FunctionalTests\FunctionalTests.csproj", "{55948F8F-8E9D-4D58-897E-BF8C1CF2A561}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{6E95284A-D685-47ED-B940-C5F0227F8FDF}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{331D7267-E279-467B-8F14-3DACD45AB394}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{331D7267-E279-467B-8F14-3DACD45AB394}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{331D7267-E279-467B-8F14-3DACD45AB394}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{331D7267-E279-467B-8F14-3DACD45AB394}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55948F8F-8E9D-4D58-897E-BF8C1CF2A561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55948F8F-8E9D-4D58-897E-BF8C1CF2A561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55948F8F-8E9D-4D58-897E-BF8C1CF2A561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55948F8F-8E9D-4D58-897E-BF8C1CF2A561}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = MongoDB\MongoDB.csproj
+	EndGlobalSection
+EndGlobal
