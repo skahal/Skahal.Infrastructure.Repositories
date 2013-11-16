@@ -34,7 +34,13 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 
 			if (!File.Exists(mongodPath)) {
 				mongodPath = "/etc/rc.d/init.d/mongod";
+
+				if (!File.Exists(mongodPath)) {
+					mongodPath = "mongod";
+				}
 			}
+
+
 
 			ProcessHelper.Run (mongodPath, "--dbpath {0} --logpath {1}".With (dbPath, logPath), false);
 		
