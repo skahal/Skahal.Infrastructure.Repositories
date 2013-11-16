@@ -18,7 +18,11 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 		private UserMongoDBRepository m_target;
 		private IUnitOfWork m_unitOfWork;
 		private string[] m_mongodPaths = new string[] {
-			"/Applications/mongodb/bin/mongod"
+			"/Applications/mongodb/bin/mongod",
+			"mongodb/mongod",
+			"/etc/rc.d/init.d/mongod",
+			"/etc/init.d/mongodb",
+			"mongod"
 		};
 		#endregion
 
@@ -44,11 +48,10 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 			}
 
 			if (String.IsNullOrEmpty (mongodPath)) {
-				ProcessHelper.Run ("service", "mongodb --dbpath {0} --logpath {1}".With (dbPath, logPath), false);
-				//throw new InvalidOperationException ("There is no mongod in the following paths: {0}. Please, check if MongoDB is installed.".With (String.Join (", ", m_mongodPaths)));
-			} else {
-
+				throw new InvalidOperationException ("There is no mongod in the following paths: {0}. Please, check if MongoDB is installed.".With (String.Join (", ", m_mongodPaths)));
 			}
+
+			ProcessHelper.Run (mongodPath, "--dbpath {0} --logpath {1}".With (dbPath, logPath), false);
 		
 			FileHelper.WaitForFileContentContains (logPath, "waiting for connections");
 		}
