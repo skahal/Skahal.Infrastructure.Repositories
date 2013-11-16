@@ -23,7 +23,7 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 		[TestFixtureSetUp]
 		public void InitializeFixture()
 		{
-			if (ProcessHelper.CountInstances ("mongod") == 0) {
+			if (ProcessHelper.CountInstances ("mongod") == 0 && ProcessHelper.CountInstances ("mongodb") == 0) {
 				Console.WriteLine ("Trying to start MongoDb...");
 		
 				var rootDir = VSProjectHelper.GetProjectFolderPath ("FunctionalTests");
