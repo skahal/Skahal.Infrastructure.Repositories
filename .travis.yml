@@ -5,6 +5,7 @@ install:
   - tar -zxvf mongodb-linux-x86_64-2.4.8.tgz
   - mkdir -p /home/travis/build/skahal/Skahal.Infrastructure.Repositories/src/FunctionalTests/bin/debug/mongodb
   - cp -R -n mongodb-linux-x86_64-2.4.8/ /home/travis/build/skahal/Skahal.Infrastructure.Repositories/src/FunctionalTests/bin/debug/mongodb
+  - ls /home/travis/build/skahal/Skahal.Infrastructure.Repositories/src/FunctionalTests/bin/debug/mongodb
   - sudo apt-get install mono-devel mono-gmcs nunit-console
   - mozroots --import --sync
  

@@ -17,13 +17,6 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 		#region Fields
 		private UserMongoDBRepository m_target;
 		private IUnitOfWork m_unitOfWork;
-		private string[] m_mongodPaths = new string[] {
-			"/Applications/mongodb/bin/mongod",
-			"mongodb/mongod",
-			"/etc/rc.d/init.d/mongod",
-			"/etc/init.d/mongodb",
-			"mongod"
-		};
 		#endregion
 
 		#region Tests
@@ -32,6 +25,13 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 		{
 			ProcessHelper.KillAll ("mongod");
 			var rootDir = VSProjectHelper.GetProjectFolderPath ("FunctionalTests");
+
+			var m_mongodPaths = new string[] {
+				"/Applications/mongodb/bin/mongod",
+				Path.Combine(rootDir, "bin/debug/mongodb/mongod"),
+				"mongod"
+			};
+
 			var dbPath = Path.Combine (rootDir, "db");
 			var logPath = Path.Combine (dbPath, "db.log");
 			DirectoryHelper.DeleteIfNotExists (dbPath);
@@ -51,6 +51,7 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 				throw new InvalidOperationException ("There is no mongod in the following paths: {0}. Please, check if MongoDB is installed.".With (String.Join (", ", m_mongodPaths)));
 			}
 
+			Console.WriteLine ("Using mongod in path: {0}.", mongodPath);
 			ProcessHelper.Run (mongodPath, "--dbpath {0} --logpath {1}".With (dbPath, logPath), false);
 		
 			FileHelper.WaitForFileContentContains (logPath, "waiting for connections");
