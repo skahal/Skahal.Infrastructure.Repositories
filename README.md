@@ -3,7 +3,7 @@ Skahal.Infrastructure.Repositories
 
 [![Build Status](https://travis-ci.org/skahal/Skahal.Infrastructure.Repositories.png?branch=master)](https://travis-ci.org/skahal/Skahal.Infrastructure.Repositories)
 
-Skahal.Infrastructure.Framework.Repositories.IRepository<TEntity>'s implementations:
+Skahal.Infrastructure.Framework.Repositories.IRepository<TEntity>'s implementations.
 
 
 --------

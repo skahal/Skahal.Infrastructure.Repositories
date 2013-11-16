@@ -17,6 +17,12 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 		#region Fields
 		private UserMongoDBRepository m_target;
 		private IUnitOfWork m_unitOfWork;
+		private string[] m_mongodPaths = new string[] {
+			"/Applications/mongodb/bin/mongod",
+			"/etc/rc.d/init.d/mongod",
+			"/etc/init.d/mongodb",
+			"mongod"
+		};
 		#endregion
 
 		#region Tests
@@ -30,17 +36,19 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 			DirectoryHelper.DeleteIfNotExists (dbPath);
 			DirectoryHelper.CreateIfNotExists (dbPath);
 
-			var mongodPath = "/Applications/mongodb/bin/mongod";
+			string mongodPath = null;
 
-			if (!File.Exists(mongodPath)) {
-				mongodPath = "/etc/rc.d/init.d/mongod";
-
-				if (!File.Exists(mongodPath)) {
-					mongodPath = "mongod";
+			foreach(var p in m_mongodPaths)
+			{
+				if (File.Exists (p)) {
+					mongodPath = p;
+					break;
 				}
 			}
 
-
+			if (String.IsNullOrEmpty (mongodPath)) {
+				throw new InvalidOperationException ("There is no mongod in the following paths: {0}. Please, check if MongoDB is installed.".With (String.Join (", ", m_mongodPaths)));
+			}
 
 			ProcessHelper.Run (mongodPath, "--dbpath {0} --logpath {1}".With (dbPath, logPath), false);
 		
