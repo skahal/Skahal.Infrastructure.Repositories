@@ -44,11 +44,11 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 			}
 
 			if (String.IsNullOrEmpty (mongodPath)) {
-				mongodPath = "service mongodb";
+				ProcessHelper.Run ("service", "mongodb --dbpath {0} --logpath {1}".With (dbPath, logPath), false);
 				//throw new InvalidOperationException ("There is no mongod in the following paths: {0}. Please, check if MongoDB is installed.".With (String.Join (", ", m_mongodPaths)));
-			}
+			} else {
 
-			ProcessHelper.Run (mongodPath, "--dbpath {0} --logpath {1}".With (dbPath, logPath), false);
+			}
 		
 			FileHelper.WaitForFileContentContains (logPath, "waiting for connections");
 		}
