@@ -30,7 +30,13 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 			DirectoryHelper.DeleteIfNotExists (dbPath);
 			DirectoryHelper.CreateIfNotExists (dbPath);
 
-			ProcessHelper.Run ("/Applications/mongodb/bin/mongod", "--dbpath {0} --logpath {1}".With (dbPath, logPath), false);
+			var mongodPath = "/Applications/mongodb/bin/mongod";
+
+			if (!File.Exists(mongodPath)) {
+				mongodPath = "/etc/rc.d/init.d/mongod";
+			}
+
+			ProcessHelper.Run (mongodPath, "--dbpath {0} --logpath {1}".With (dbPath, logPath), false);
 		
 			FileHelper.WaitForFileContentContains (logPath, "waiting for connections");
 		}
