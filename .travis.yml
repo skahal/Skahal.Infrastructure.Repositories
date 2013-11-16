@@ -7,5 +7,5 @@ install:
   - mozroots --import --sync
  
 script:
-  - xbuild ./src/Skahal.Infrastructure.Repositories.sln
+  - xbuild ./src/Skahal.Infrastructure.Repositories.sln  /p:"DefineConstants=TRAVIS_CI"
   - nunit-console ./src/FunctionalTests/bin/Debug/Skahal.Infrastructure.Repositories.FunctionalTests.dll
