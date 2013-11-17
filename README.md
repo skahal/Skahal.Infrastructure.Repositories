@@ -18,6 +18,12 @@ Features
 
 --------
 
+Setup
+===
+
+PM> `Install-Package Skahal.Infrastructure.Repositories.MongoDB`
+
+
 Roadmap
 ===
  - **Entity Framework**: `EFRepositoryBase`		
