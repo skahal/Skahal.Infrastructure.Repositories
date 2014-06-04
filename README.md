@@ -14,7 +14,7 @@ Features
 - Mono support
 - Fully tested on Windows and MacOSX
 - Tests coveraged 
-- Good (and good used) design patterns  
+- Good (and well used) design patterns  
 
 --------
 
