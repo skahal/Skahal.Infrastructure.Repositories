@@ -14,10 +14,10 @@ using Skahal.Infrastructure.Framework.Domain;
 namespace Skahal.Infrastructure.Repositories.FunctionalTests
 {
 	[TestFixture ()]
-	public class MongoDBRepositoryBaseTest
+	public class MongoDBRepositoryWithIdBaseTest
 	{
 		#region Fields
-		private UserMongoDBRepository m_target;
+		private EntityWithIdMongoDBRepository m_target;
 		private IUnitOfWork m_unitOfWork;
 		#endregion
 
@@ -25,10 +25,6 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 		[TestFixtureSetUp]
 		public void InitializeFixture()
 		{
-			BsonClassMap.RegisterClassMap<EntityBase> (cm => {
-				cm.MapIdProperty ("Key");
-			});
-
 			#if !TRAVIS_CI
 			ProcessHelper.KillAll ("mongod");
 			var rootDir = VSProjectHelper.GetProjectFolderPath ("FunctionalTests");
@@ -68,16 +64,16 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 		[SetUp]
 		public void InitializeTest()
 		{
-			IEnumerable<User> users;
+			IEnumerable<EntityWithId> items;
 
 			while (true) {
 				try
 				{
-					m_target = new UserMongoDBRepository ();
+					m_target = new EntityWithIdMongoDBRepository ();
 					m_unitOfWork = new MemoryUnitOfWork ();
 					m_target.SetUnitOfWork (m_unitOfWork);
 
-					users = m_target.FindAll (f => true);
+					items = m_target.FindAll (f => true);
 					break;
 				}
 				catch {
@@ -86,13 +82,13 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 				}
 			}
 
-			foreach (var u in users) {
+			foreach (var u in items) {
 				m_target.Remove (u);
 			}
 
 			for (long i = 0; i < 10; i++) {
-				var user = new User (i.ToString()) { Name = "Test name " + i, RemoteKey = "Remote Key" + (10-(i + 1)) };
-				m_target.Add (user);
+				var entityWithId = new EntityWithId (i.ToString()) { Name = "Test name " + i, RemoteKey = "Remote Key" + (10-(i + 1)) };
+				m_target.Add (entityWithId);
 			}
 
 			m_unitOfWork.Commit ();
@@ -108,15 +104,15 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 		public void Add_NotCommitAndCommit_PersistsAfterCommit ()
 		{
 			var originalCount = m_target.CountAll ();
-			var user = new User (Guid.NewGuid ().ToString ()) { Name = "Test name " + Guid.NewGuid().ToString() };
-			m_target.Add (user);
+			var entityWithId = new EntityWithId (Guid.NewGuid ().ToString ()) { Name = "Test name " + Guid.NewGuid().ToString() };
+			m_target.Add (entityWithId);
 			Assert.AreEqual (originalCount, m_target.CountAll());
 
 			m_unitOfWork.Commit ();
 
 			Assert.AreEqual (originalCount + 1, m_target.CountAll ());
-			var searchUser = m_target.FindBy (user.Key);
-			Assert.AreEqual (user.Name, searchUser.Name);
+			var searchEntityWithId = m_target.FindBy (entityWithId.Id);
+			Assert.AreEqual (entityWithId.Name, searchEntityWithId.Name);
 		}
 
 		[Test ()]
@@ -129,8 +125,8 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 			m_unitOfWork.Commit ();
 
 			Assert.AreEqual (originalCount - 1, m_target.CountAll ());
-			var searchUser = m_target.FindBy ("2");
-			Assert.IsNull (searchUser);
+			var searchEntityWithId = m_target.FindBy ("2");
+			Assert.IsNull (searchEntityWithId);
 		}
 
 		[Test ()]
@@ -209,20 +205,12 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 			Assert.IsNull (actual);
 
 			actual = m_target.FindBy ("2");
-			Assert.AreEqual ("2", actual.Key);
+			Assert.AreEqual ("2", actual.Id);
 			Assert.AreEqual ("Test name 2", actual.Name);
 
 			actual = m_target.FindBy ("9");
-			Assert.AreEqual ("9", actual.Key);
+			Assert.AreEqual ("9", actual.Id);
 			Assert.AreEqual ("Test name 9", actual.Name);
-		}
-
-		[Test()]
-		public void DiffRepositories_CountAll_DiffCounts()
-		{
-			var userPreferenceRepository = new UserPreferenceMongoDBRepository ();
-			Assert.IsTrue (m_target.CountAll () == 10);
-			Assert.IsTrue (userPreferenceRepository.CountAll () == 0);
 		}
 		#endregion
 	}

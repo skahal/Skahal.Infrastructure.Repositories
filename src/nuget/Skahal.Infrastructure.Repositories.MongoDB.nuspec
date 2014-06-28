@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Skahal.Infrastructure.Repositories.MongoDB</id>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
     <authors>Skahal</authors>
     <owners>g1acomell1</owners>
     <projectUrl>https://github.com/skahal/Skahal.Infrastructure.Repositories</projectUrl>
@@ -16,4 +16,9 @@
       <dependency id="mongocsharpdriver" version="1.8.3" />
     </dependencies>
   </metadata>
+    <files>
+  		<file src="../MongoDB/bin/Debug/Skahal.Infrastructure.Repositories.MongoDB.dll" target="lib\net35" /> 
+  		<file src="../MongoDB/bin/Debug/Skahal.Infrastructure.Repositories.MongoDB.dll.mdb" target="lib\net35" />
+  		<file src="../MongoDB/bin/Debug/Skahal.Infrastructure.Repositories.MongoDB.xml" target="lib\net35" />
+ 	</files>
 </package>

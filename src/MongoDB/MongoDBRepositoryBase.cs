@@ -8,6 +8,7 @@ using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using Skahal.Infrastructure.Framework.Domain;
 using Skahal.Infrastructure.Framework.Repositories;
+using Skahal.Infrastructure.Framework.Logging;
 
 namespace Skahal.Infrastructure.Repositories
 {
@@ -23,25 +24,16 @@ namespace Skahal.Infrastructure.Repositories
 
 		#region Constructors
 		/// <summary>
-		/// Initializes the <see cref="Skahal.Infrastructure.Repositories.MongoDBRepositoryBase`1"/> class.
+		/// Initializes a new instance of the <see cref="Skahal.Infrastructure.Repositories.MongoDBRepositoryBase{TEntity}"/> class.
 		/// </summary>
-		static MongoDBRepositoryBase()
-		{
-			BsonClassMap.RegisterClassMap<EntityBase>(cm => {
-				cm.MapIdProperty("Key");
-			});
-		}
-
-		/// <summary>
-		/// Initializes a new instance of the
-		/// <see cref="jogosdaqui.Infrastructure.Repositories.MongoDB.MongoDBRepositoryBase`1"/> class.
-		/// </summary>
+		/// <param name="mongoUrl">Mongo URL.</param>
+		/// <param name="collectionName">Collection name.</param>
 		public MongoDBRepositoryBase(string mongoUrl, string collectionName)
 		{
 			var url = new MongoUrl(mongoUrl);
 			var client = new MongoClient(url);
 			var server = client.GetServer();
-			var database = server.GetDatabase(String.IsNullOrWhiteSpace(url.DatabaseName) ? "test" : url.DatabaseName);
+			var database = server.GetDatabase(String.IsNullOrEmpty(url.DatabaseName) ? "test" : url.DatabaseName);
 			m_collection = database.GetCollection<TEntity>(collectionName);
 		}
 		#endregion
