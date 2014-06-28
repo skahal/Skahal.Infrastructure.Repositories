@@ -38,9 +38,6 @@
     <Reference Include="TestSharp">
       <HintPath>..\packages\TestSharp.1.0.2\lib\net40\TestSharp.dll</HintPath>
     </Reference>
-    <Reference Include="Skahal.Infrastructure">
-      <HintPath>..\packages\Skahal.Infrastructure.Framework.0.5.9\lib\net35\Skahal.Infrastructure.Framework.dll</HintPath>
-    </Reference>
     <Reference Include="MongoDB.Bson">
       <HintPath>..\packages\mongocsharpdriver.1.9.1\lib\net35\MongoDB.Bson.dll</HintPath>
     </Reference>
@@ -53,6 +50,9 @@
     <Reference Include="HelperSharp">
       <HintPath>..\packages\HelperSharp.0.0.3.6\lib\net35\HelperSharp.dll</HintPath>
     </Reference>
+    <Reference Include="Skahal.Infrastructure.Framework">
+      <HintPath>..\packages\Skahal.Infrastructure.Framework.0.5.9\lib\net35\Skahal.Infrastructure.Framework.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -63,9 +63,6 @@
     <Compile Include="MongoDB\MongoDBRepositoryBaseTest.cs" />
     <Compile Include="MongoDB\Stubs\UserMongoDBRepository.cs" />
     <Compile Include="MongoDB\Stubs\UserPreferenceMongoDBRepository.cs" />
-    <Compile Include="MongoDB\Stubs\EntityWithId.cs" />
-    <Compile Include="MongoDB\Stubs\EntityWithIdMongoDBRepository.cs" />
-    <Compile Include="MongoDB\MongoDBRepositoryWithIdBaseTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MongoDB\MongoDB.csproj">
