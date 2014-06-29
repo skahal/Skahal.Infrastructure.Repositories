@@ -10,7 +10,7 @@ using Skahal.Infrastructure.Framework.Domain;
 using Skahal.Infrastructure.Framework.Repositories;
 using Skahal.Infrastructure.Framework.Logging;
 
-namespace Skahal.Infrastructure.Repositories
+namespace Skahal.Infrastructure.Repositories.MongoDB
 {
 	/// <summary>
 	/// Mongo DB repository base class.

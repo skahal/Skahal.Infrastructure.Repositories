@@ -3,12 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{55948F8F-8E9D-4D58-897E-BF8C1CF2A561}</ProjectGuid>
+    <ProjectGuid>{04984C54-6296-4E9C-BC09-F037817EDA00}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Skahal.Infrastructure.Repositories.FunctionalTests</RootNamespace>
-    <AssemblyName>Skahal.Infrastructure.Repositories.FunctionalTests</AssemblyName>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
+    <RootNamespace>Skahal.Infrastructure.Repositories.GData</RootNamespace>
+    <AssemblyName>Skahal.Infrastructure.Repositories.GData</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -31,30 +29,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="nunit.framework" />
-    <Reference Include="Ionic.Utils.Zip">
-      <HintPath>..\packages\TestSharp.1.0.2\lib\net40\Ionic.Utils.Zip.dll</HintPath>
-    </Reference>
-    <Reference Include="TestSharp">
-      <HintPath>..\packages\TestSharp.1.0.2\lib\net40\TestSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Bson">
-      <HintPath>..\packages\mongocsharpdriver.1.9.1\lib\net35\MongoDB.Bson.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver">
-      <HintPath>..\packages\mongocsharpdriver.1.9.1\lib\net35\MongoDB.Driver.dll</HintPath>
+    <Reference Include="HelperSharp">
+      <HintPath>..\packages\HelperSharp.0.0.3.6\lib\net35\HelperSharp.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.Abstractions">
       <HintPath>..\packages\System.IO.Abstractions.1.4.0.86\lib\net35\System.IO.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="HelperSharp">
-      <HintPath>..\packages\HelperSharp.0.0.3.6\lib\net35\HelperSharp.dll</HintPath>
     </Reference>
     <Reference Include="Skahal.Infrastructure.Framework">
       <HintPath>..\packages\Skahal.Infrastructure.Framework.0.6.2\lib\net35\Skahal.Infrastructure.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.0.5\lib\net35\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Google.GData.Client">
       <HintPath>..\packages\Google.GData.Client.2.2.0.0\lib\Google.GData.Client.dll</HintPath>
@@ -78,32 +63,12 @@
       <HintPath>..\packages\GDataDB.Linq.0.5.0.0\lib\GDataDB.Linq.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GDataRepositoryBase.cs" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="MongoDB\" />
-    <Folder Include="MongoDB\Stubs\" />
-    <Folder Include="GData\" />
-    <Folder Include="GData\Stubs\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="MongoDB\MongoDBRepositoryBaseTest.cs" />
-    <Compile Include="MongoDB\Stubs\UserMongoDBRepository.cs" />
-    <Compile Include="MongoDB\Stubs\UserPreferenceMongoDBRepository.cs" />
-    <Compile Include="GData\GDataRepositoryBaseTest.cs" />
-    <Compile Include="GData\Stubs\SimpleDataStub.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MongoDB\MongoDB.csproj">
-      <Project>{331D7267-E279-467B-8F14-3DACD45AB394}</Project>
-      <Name>MongoDB</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GData\GData.csproj">
-      <Project>{04984C54-6296-4E9C-BC09-F037817EDA00}</Project>
-      <Name>GData</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>
