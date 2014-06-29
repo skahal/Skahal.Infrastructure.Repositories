@@ -59,7 +59,11 @@ namespace Skahal.Infrastructure.Repositories.MongoDB
 		/// <param name="filter">The entities filter.</param>
 		public override IEnumerable<TEntity> FindAll (int offset, int limit, Expression<Func<TEntity, bool>> filter)
 		{
-			return m_collection.FindAll ().Where (filter.Compile()).Skip (offset).Take (limit);
+            if (filter == null) {
+                return m_collection.FindAll ().Skip (offset).Take (limit);
+            } else {
+                return m_collection.FindAll ().Where (filter.Compile()).Skip (offset).Take (limit);
+            }
 		}
 
 		/// <summary>
@@ -73,7 +77,11 @@ namespace Skahal.Infrastructure.Repositories.MongoDB
 		/// <typeparam name="TKey">The 1st type parameter.</typeparam>
 		public override IEnumerable<TEntity> FindAllAscending<TKey> (int offset, int limit, Expression<Func<TEntity, bool>> filter, Expression<Func<TEntity, TKey>> orderBy)
 		{
-			return m_collection.FindAll ().Where (filter.Compile()).OrderBy(orderBy.Compile()).Skip (offset).Take (limit);
+            if (filter == null) {
+                return m_collection.FindAll ().OrderBy(orderBy.Compile()).Skip (offset).Take (limit);
+            } else {
+                return m_collection.FindAll ().Where (filter.Compile()).OrderBy(orderBy.Compile()).Skip (offset).Take (limit);
+            }
 		}
 
 		/// <summary>
@@ -87,7 +95,11 @@ namespace Skahal.Infrastructure.Repositories.MongoDB
 		/// <typeparam name="TKey">The 1st type parameter.</typeparam>
 		public override IEnumerable<TEntity> FindAllDescending<TKey> (int offset, int limit, Expression<Func<TEntity, bool>> filter, Expression<Func<TEntity, TKey>> orderBy)
 		{
-			return m_collection.FindAll ().Where (filter.Compile()).OrderByDescending(orderBy.Compile()).Skip (offset).Take (limit);
+            if (filter == null) {
+                return m_collection.FindAll ().OrderByDescending(orderBy.Compile()).Skip (offset).Take (limit);
+            } else {
+                return m_collection.FindAll ().Where (filter.Compile()).OrderByDescending(orderBy.Compile()).Skip (offset).Take (limit);
+            }
 		}
 
 		/// <summary>
@@ -97,7 +109,11 @@ namespace Skahal.Infrastructure.Repositories.MongoDB
 		/// <param name="filter">Filter.</param>
 		public override long CountAll (Expression<Func<TEntity, bool>> filter)
 		{
-			return m_collection.FindAll ().LongCount (filter.Compile());
+            if (filter == null) {
+                return m_collection.FindAll ().LongCount();
+            } else {
+                return m_collection.FindAll ().LongCount(filter.Compile());
+            }
 		}
 
 		/// <summary>
