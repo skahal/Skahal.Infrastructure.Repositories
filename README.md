@@ -11,6 +11,9 @@ Skahal.Infrastructure.Framework.Repositories.IRepository<TEntity>'s implementati
 Features
 ===
 - MongoDB (`MongoDBRepositoryBase`)
+- EntityFramework (`EFRepositoryBase`)
+- GData (Google Docs Spreadsheet) (`GDataRepositoryBase`)
+- DropboxRepositoryBase (Datastore) (`DropboxRepositoryBase`)
 - Mono support
 - Fully tested on Windows and MacOSX
 - Tests coveraged 
@@ -26,7 +29,10 @@ PM> `Install-Package Skahal.Infrastructure.Repositories.MongoDB`
 
 Roadmap
 ===
- - **Entity Framework**: `EFRepositoryBase`		
+ - Publish NuGet packages for:
+	 - EntityFramework
+	 - GData
+	 - Dropbox	
  		
  		
  

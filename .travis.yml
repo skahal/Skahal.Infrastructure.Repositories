@@ -9,3 +9,4 @@ install:
 script:
   - xbuild ./src/Skahal.Infrastructure.Repositories.sln  /p:"DefineConstants=TRAVIS_CI"
   - nunit-console ./src/FunctionalTests/bin/Debug/Skahal.Infrastructure.Repositories.FunctionalTests.dll
+  - nunit-console ./src/Dropbox.FunctionalTests/bin/Debug/Skahal.Infrastructure.Repositories.Dropbox.FunctionalTests.dll

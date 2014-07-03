@@ -16,35 +16,45 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework", "EntityFr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GData", "GData\GData.csproj", "{04984C54-6296-4E9C-BC09-F037817EDA00}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dropbox", "Dropbox\Dropbox.csproj", "{44EE4D70-3648-47A6-B53E-DD3855E7A407}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dropbox.FunctionalTests", "Dropbox.FunctionalTests\Dropbox.FunctionalTests.csproj", "{AE9DFF59-8393-4BC8-9405-C91589F26F67}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{04984C54-6296-4E9C-BC09-F037817EDA00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{04984C54-6296-4E9C-BC09-F037817EDA00}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{04984C54-6296-4E9C-BC09-F037817EDA00}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{04984C54-6296-4E9C-BC09-F037817EDA00}.Release|Any CPU.Build.0 = Release|Any CPU
 		{331D7267-E279-467B-8F14-3DACD45AB394}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{331D7267-E279-467B-8F14-3DACD45AB394}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{331D7267-E279-467B-8F14-3DACD45AB394}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{331D7267-E279-467B-8F14-3DACD45AB394}.Release|Any CPU.Build.0 = Release|Any CPU
-		{41B4CE2F-31FD-4001-B2DD-D1C25AD372BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{41B4CE2F-31FD-4001-B2DD-D1C25AD372BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{41B4CE2F-31FD-4001-B2DD-D1C25AD372BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{41B4CE2F-31FD-4001-B2DD-D1C25AD372BC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{55948F8F-8E9D-4D58-897E-BF8C1CF2A561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{55948F8F-8E9D-4D58-897E-BF8C1CF2A561}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55948F8F-8E9D-4D58-897E-BF8C1CF2A561}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55948F8F-8E9D-4D58-897E-BF8C1CF2A561}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = MongoDB\MongoDB.csproj
+		{41B4CE2F-31FD-4001-B2DD-D1C25AD372BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41B4CE2F-31FD-4001-B2DD-D1C25AD372BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41B4CE2F-31FD-4001-B2DD-D1C25AD372BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41B4CE2F-31FD-4001-B2DD-D1C25AD372BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04984C54-6296-4E9C-BC09-F037817EDA00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04984C54-6296-4E9C-BC09-F037817EDA00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04984C54-6296-4E9C-BC09-F037817EDA00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04984C54-6296-4E9C-BC09-F037817EDA00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44EE4D70-3648-47A6-B53E-DD3855E7A407}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44EE4D70-3648-47A6-B53E-DD3855E7A407}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44EE4D70-3648-47A6-B53E-DD3855E7A407}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44EE4D70-3648-47A6-B53E-DD3855E7A407}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE9DFF59-8393-4BC8-9405-C91589F26F67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE9DFF59-8393-4BC8-9405-C91589F26F67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE9DFF59-8393-4BC8-9405-C91589F26F67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE9DFF59-8393-4BC8-9405-C91589F26F67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = MongoDB\MongoDB.csproj
 	EndGlobalSection
 EndGlobal

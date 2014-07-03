@@ -1,9 +1,9 @@
 ﻿#if !TRAVIS_CI
+using System;
 using System.Linq;
 using NUnit.Framework;
 using Skahal.Infrastructure.Framework.Repositories;
 using Skahal.Infrastructure.Repositories.GData;
-using System;
 
 namespace Skahal.Infrastructure.Repositories.FunctionalTests
 {
