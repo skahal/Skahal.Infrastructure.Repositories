@@ -1,5 +1,4 @@
-﻿#if !TRAVIS_CI
-using System;
+﻿using System;
 using System.Linq;
 using NUnit.Framework;
 using Skahal.Infrastructure.Framework.Repositories;
@@ -76,8 +75,10 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 
         private static GDataRepositoryBase<SimpleDataStub> CreateTarget()
         {
-            return new GDataRepositoryBase<SimpleDataStub>("GDataRepositoryBaseTest", "username", "password");
+            var username = Environment.GetEnvironmentVariable("GDataUsername");
+            var password = Environment.GetEnvironmentVariable("GDataPassword");
+
+            return new GDataRepositoryBase<SimpleDataStub>("GDataRepositoryBaseTest", username, password);
         }
     }
 }
-#endif

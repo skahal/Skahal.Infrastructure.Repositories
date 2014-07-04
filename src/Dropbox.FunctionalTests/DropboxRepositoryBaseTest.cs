@@ -1,4 +1,4 @@
-﻿#if !TRAVIS_CI
+﻿using System;
 using System.Linq;
 using NUnit.Framework;
 using Skahal.Infrastructure.Framework.Repositories;
@@ -115,9 +115,9 @@ namespace Skahal.Infrastructure.Repositories.Dropbox.FunctionalTests
 
         private static DropboxRepositoryBase<SimpleDataStub> CreateClient()
         {
-            var target = new DropboxRepositoryBase<SimpleDataStub>("apiToken", "DropboxRepositoryBaseTest");
+            var apiToken = Environment.GetEnvironmentVariable("DropboxApiToken");
+            var target = new DropboxRepositoryBase<SimpleDataStub>(apiToken, "DropboxRepositoryBaseTest");
             return target;
         }
     }
 }
-#endif
