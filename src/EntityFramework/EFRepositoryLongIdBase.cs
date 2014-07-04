@@ -10,11 +10,16 @@ namespace Skahal.Infrastructure.Repositories.EntityFramework
     /// <summary>
     /// An EntityFramework repository using long id.
     /// </summary>
-    public class EFRepositoryLongIdBase <TDomainEntity> : EFRepositoryBase<TDomainEntity, long>
-        where TDomainEntity : EntityWithIdBase<long>, IAggregateRoot
+    public class EFRepositoryLongIdBase <TEntity> : EFRepositoryBase<TEntity, long>
+        where TEntity : EntityWithIdBase<long>, IAggregateRoot
     {
 
         #region Constructors
+		/// <summary>
+		/// Initializes a new instance of the
+		/// <see cref="Skahal.Infrastructure.Repositories.EntityFramework.EFRepositoryLongIdBase{TEntity}"/> class.
+		/// </summary>
+		/// <param name="context">Context.</param>
         protected EFRepositoryLongIdBase(DbContext context) : base(context)
         {
         }
@@ -26,7 +31,7 @@ namespace Skahal.Infrastructure.Repositories.EntityFramework
         /// </summary>
         /// <param name="key">The key.</param>
         /// <returns></returns>
-        public override TDomainEntity FindBy(object key)
+        public override TEntity FindBy(object key)
         {
             var id = (long)key;
 

@@ -17,15 +17,15 @@ namespace Skahal.Infrastructure.Repositories.EntityFramework
     /// Entity framework repository base class.
     /// </summary>
     [SuppressMessage("Microsoft.Design", "CA1005:AvoidExcessiveParametersOnGenericTypes")]
-    public abstract class EFRepositoryBase<TDomainEntity, TId> : RepositoryBase<TDomainEntity>
-        where TDomainEntity : EntityWithIdBase<TId>, IAggregateRoot
+    public abstract class EFRepositoryBase<TEntity, TId> : RepositoryBase<TEntity>
+        where TEntity : EntityWithIdBase<TId>, IAggregateRoot
     {
         #region Constructors
-        /// <summary>
-        /// Initializes a new instance of the
-        /// <see cref="Skahal.Infrastructure.Repositories.EntityFramework.EFRepositoryBase`2"/> class.
-        /// </summary>
-        /// <param name="context">The db context.</param>
+		/// <summary>
+		/// Initializes a new instance of the
+		/// <see cref="Skahal.Infrastructure.Repositories.EntityFramework.EFRepositoryBase{TEntity, TId}" /> class.
+		/// </summary>
+		/// <param name="context">Context.</param>
         protected EFRepositoryBase(DbContext context)
         {
             Context = context;
@@ -45,11 +45,11 @@ namespace Skahal.Infrastructure.Repositories.EntityFramework
         /// </summary>
         /// <value>The db set.</value>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Db")]
-        protected virtual DbSet<TDomainEntity> DbSet
+        protected virtual DbSet<TEntity> DbSet
         {
             get
             {
-                return Context.Set<TDomainEntity>();
+                return Context.Set<TEntity>();
             }
         }
 
@@ -58,7 +58,7 @@ namespace Skahal.Infrastructure.Repositories.EntityFramework
         /// </summary>
         /// <value>The db query.</value>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Db")]
-        protected virtual DbQuery<TDomainEntity> DbQuery
+        protected virtual DbQuery<TEntity> DbQuery
         {
             get
             {
@@ -74,7 +74,7 @@ namespace Skahal.Infrastructure.Repositories.EntityFramework
         /// <returns>The number of the entities that matches the filter.</returns>
         /// <param name="filter">Filter.</param>
         [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
-        public override long CountAll(Expression<Func<TDomainEntity, bool>> filter)
+        public override long CountAll(Expression<Func<TEntity, bool>> filter)
         {
             return DbSet.Count(filter);
         }
@@ -87,7 +87,7 @@ namespace Skahal.Infrastructure.Repositories.EntityFramework
         /// <param name="limit">The result count limit.</param>
         /// <param name="filter">The entities filter.</param>
         [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
-        public override IEnumerable<TDomainEntity> FindAll(int offset, int limit, Expression<Func<TDomainEntity, bool>> filter)
+        public override IEnumerable<TEntity> FindAll(int offset, int limit, Expression<Func<TEntity, bool>> filter)
         {
             var result = DbQuery
                 .Where(filter)
@@ -109,7 +109,7 @@ namespace Skahal.Infrastructure.Repositories.EntityFramework
         /// <param name="filter">The entities filter.</param>
         /// <param name="orderBy">The order.</param>
         /// <typeparam name="TOrderByKey">The 1st type parameter.</typeparam>
-        public override IEnumerable<TDomainEntity> FindAllAscending<TOrderByKey>(int offset, int limit, Expression<Func<TDomainEntity, bool>> filter, Expression<Func<TDomainEntity, TOrderByKey>> orderBy)
+        public override IEnumerable<TEntity> FindAllAscending<TOrderByKey>(int offset, int limit, Expression<Func<TEntity, bool>> filter, Expression<Func<TEntity, TOrderByKey>> orderBy)
         {
             var result = DbQuery
                 .Where(filter)
@@ -131,7 +131,7 @@ namespace Skahal.Infrastructure.Repositories.EntityFramework
         /// <param name="filter">The entities filter.</param>
         /// <param name="orderBy">The order.</param>
         /// <typeparam name="TOrderByKey">The 1st type parameter.</typeparam>
-        public override IEnumerable<TDomainEntity> FindAllDescending<TOrderByKey>(int offset, int limit, Expression<Func<TDomainEntity, bool>> filter, Expression<Func<TDomainEntity, TOrderByKey>> orderBy)
+        public override IEnumerable<TEntity> FindAllDescending<TOrderByKey>(int offset, int limit, Expression<Func<TEntity, bool>> filter, Expression<Func<TEntity, TOrderByKey>> orderBy)
         {
             var result = DbQuery
                 .Where(filter)
@@ -149,15 +149,15 @@ namespace Skahal.Infrastructure.Repositories.EntityFramework
         /// </summary>
         /// <returns>The found entity.</returns>
         /// <param name="key">Key.</param>
-        public override abstract TDomainEntity FindBy(object key);
+        public override abstract TEntity FindBy(object key);
 
         /// <summary>
         /// Persists the deleted item.
         /// </summary>
         /// <param name="item">Item.</param>
-        protected override void PersistDeletedItem(TDomainEntity item)
+        protected override void PersistDeletedItem(TEntity item)
         {
-            var entry = Context.Entry<TDomainEntity>(item);
+            var entry = Context.Entry<TEntity>(item);
             entry.State = EntityState.Deleted;
         }
 
@@ -166,7 +166,7 @@ namespace Skahal.Infrastructure.Repositories.EntityFramework
         /// </summary>
         /// <param name="item">Item.</param>
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
-        protected override void PersistNewItem(TDomainEntity item)
+        protected override void PersistNewItem(TEntity item)
         {            
             DbSet.Add(item);
         }
@@ -176,9 +176,9 @@ namespace Skahal.Infrastructure.Repositories.EntityFramework
         /// Persists the updated item.
         /// </summary>
         /// <param name="item">Item.</param>
-        protected override void PersistUpdatedItem(TDomainEntity item)
+        protected override void PersistUpdatedItem(TEntity item)
         {
-            var entry = Context.Entry<TDomainEntity>(item);
+            var entry = Context.Entry<TEntity>(item);
 
             entry.State = EntityState.Modified;            
         }            
@@ -190,7 +190,7 @@ namespace Skahal.Infrastructure.Repositories.EntityFramework
         /// </summary>
         /// <param name="query">Query.</param>
         [SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "query")]
-        private static void LogQuery(IQueryable<TDomainEntity> query)
+        private static void LogQuery(IQueryable<TEntity> query)
         {
 #if DEBUG
             LogService.Debug(query.ToString());

@@ -29,12 +29,11 @@ namespace Skahal.Infrastructure.Repositories.Dropbox
         #endregion
 
         #region Constructors
-        /// <summary>
-        /// Initializes a new instance of the
-        /// <see cref="Skahal.Infrastructure.Repositories.Dropbox.DropboxRepositoryBase`1"/> class.
-        /// </summary>
-        /// <param name="apiToken">The Dropbox API token. Configure your app on Dropbox, then call https://www.dropbox.com/1/oauth2/authorize?client_id=[app key]&response_type=code&redirect_uri=http://localhost</param>
-        /// <param name="datastoreId">The datastore identifier.</param>
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Skahal.Infrastructure.Repositories.Dropbox.DropboxRepositoryBase{TEntity}" /> class.
+		/// </summary>
+		/// <param name="apiToken">The Dropbox API token. Configure your app on Dropbox, then call https://www.dropbox.com/1/oauth2/authorize?client_id=[app key]&amp;response_type=code&amp;redirect_uri=http://localhost</param>
+		/// <param name="datastoreId">The datastore identifier.</param>
         public DropboxRepositoryBase(string apiToken, string datastoreId)
         {
             ExceptionHelper.ThrowIfNull("apiToken", apiToken);
@@ -46,6 +45,11 @@ namespace Skahal.Infrastructure.Repositories.Dropbox
         #endregion
 
         #region Methods
+		/// <summary>
+		/// Counts all entities that matches the filter.
+		/// </summary>
+		/// <returns>The number of the entities that matches the filter.</returns>
+		/// <param name="filter">Filter.</param>
         public override long CountAll(Expression<Func<TEntity, bool>> filter)
         {
             Initialize();
@@ -60,6 +64,13 @@ namespace Skahal.Infrastructure.Repositories.Dropbox
             }
         }
 
+		/// <summary>
+		/// Finds all entities that matches the filter.
+		/// </summary>
+		/// <returns>The found entities.</returns>
+		/// <param name="offset">The offset to start the result.</param>
+		/// <param name="limit">The result count limit.</param>
+		/// <param name="filter">The entities filter.</param>
         public override IEnumerable<TEntity> FindAll(int offset, int limit, Expression<Func<TEntity, bool>> filter)
         {
             Initialize();
@@ -79,24 +90,50 @@ namespace Skahal.Infrastructure.Repositories.Dropbox
             }
         }
 
+		/// <summary>
+		/// Finds all entities that matches the filter in a ascending order.
+		/// </summary>
+		/// <returns>The found entities.</returns>
+		/// <param name="offset">The offset to start the result.</param>
+		/// <param name="limit">The result count limit.</param>
+		/// <param name="filter">The entities filter.</param>
+		/// <param name="orderBy">The order.</param>
+		/// <typeparam name="TKey">The 1st type parameter.</typeparam>
         public override IEnumerable<TEntity> FindAllAscending<TKey>(int offset, int limit, Expression<Func<TEntity, bool>> filter, Expression<Func<TEntity, TKey>> orderBy)
         {
             Initialize();
             return FindAll(offset, limit, filter).OrderBy(orderBy.Compile());
         }
 
+		/// <summary>
+		/// Finds all entities that matches the filter in a descending order.
+		/// </summary>
+		/// <returns>The found entities.</returns>
+		/// <param name="offset">The offset to start the result.</param>
+		/// <param name="limit">The result count limit.</param>
+		/// <param name="filter">The entities filter.</param>
+		/// <param name="orderBy">The order.</param>
+		/// <typeparam name="TKey">The 1st type parameter.</typeparam>
         public override IEnumerable<TEntity> FindAllDescending<TKey>(int offset, int limit, Expression<Func<TEntity, bool>> filter, Expression<Func<TEntity, TKey>> orderBy)
         {
             Initialize();
             return FindAll(offset, limit, filter).OrderByDescending(orderBy.Compile());
         }
 
+		/// <summary>
+		/// Finds the entity by the key.
+		/// </summary>
+		/// <returns>The found entity.</returns>
+		/// <param name="key">Key.</param>
         public override TEntity FindBy(object key)
         {
             Initialize();
             return m_table.Get(key as string);
         }
 
+        /// <summary>
+        /// Clears all.
+        /// </summary>
         public void ClearAll()
         {
             Initialize();
@@ -109,6 +146,10 @@ namespace Skahal.Infrastructure.Repositories.Dropbox
             PushToDropbox();
         }
 
+		/// <summary>
+		/// Persists the deleted item.
+		/// </summary>
+		/// <param name="item">Item.</param>
         protected override void PersistDeletedItem(TEntity item)
         {
             Initialize();
@@ -116,6 +157,10 @@ namespace Skahal.Infrastructure.Repositories.Dropbox
             PushToDropbox();
         }
 
+        /// <summary>
+        /// Persists the new item.
+        /// </summary>
+        /// <param name="item">The item.</param>
         protected override void PersistNewItem(TEntity item)
         {
             Initialize();
@@ -131,6 +176,10 @@ namespace Skahal.Infrastructure.Repositories.Dropbox
             }
         }
 
+        /// <summary>
+        /// Persists the updated item.
+        /// </summary>
+        /// <param name="item">The item.</param>
         protected override void PersistUpdatedItem(TEntity item)
         {
             Initialize();

@@ -21,7 +21,7 @@ namespace Skahal.Infrastructure.Repositories.GData
     /// The CountAll and FindAll methods are not optimized, this mean that all linq expression are performed locally.
     /// </remarks>
     /// </summary>
-    public class GDataRepositoryBase<TEntity> : RepositoryBase<TEntity> 
+    public class GDataRepositoryBase<TEntity> : RepositoryBase<TEntity>
         where TEntity : EntityWithIdBase<string>, IAggregateRoot, new()
     {
         #region Fields
@@ -33,9 +33,8 @@ namespace Skahal.Infrastructure.Repositories.GData
         #endregion
 
         #region Constructors
-        /// <summary>
-        /// Initializes a new instance of the
-        /// <see cref="Skahal.Infrastructure.Repositories.GData.GDataRepositoryBase`1"/> class.
+        /// <summary>        
+        /// Initializes a new instance of the <see cref="GDataRepositoryBase{TEntity}"/> class.
         /// </summary>
         /// <param name="databaseName">The database name. This is the name of spreadsheet that will be created on Google Docs.</param>
         /// <param name="userName">The Google Docs account user name.</param>
@@ -45,14 +44,14 @@ namespace Skahal.Infrastructure.Repositories.GData
         {
         }
 
+
         /// <summary>
-        /// Initializes a new instance of the
-        /// <see cref="Skahal.Infrastructure.Repositories.GData.GDataRepositoryBase`1"/> class.
+        /// Initializes a new instance of the <see cref="GDataRepositoryBase{TEntity}"/> class.
         /// </summary>
         /// <param name="databaseName">The database name. This is the name of spreadsheet that will be created on Google Docs.</param>
         /// <param name="userName">The Google Docs account user name.</param>
         /// <param name="password">The Google Docs account password. If you use two-steps-verification, will you need to generated a app specific password.</param>
-        /// <param name="tableName">The default name of table (sheet) is the entity name, but you can choose your own with this argument.</param>>
+        /// <param name="tableName">The default name of table (sheet) is the entity name, but you can choose your own with this argument.</param>
         public GDataRepositoryBase(string databaseName, string userName, string password, string tableName)
         {
             m_databaseName = databaseName;
@@ -95,7 +94,7 @@ namespace Skahal.Infrastructure.Repositories.GData
 
             elements = filter == null ? elements : elements.Where(filter.Compile());
 
-            return elements.Skip (offset).Take (limit);
+            return elements.Skip(offset).Take(limit);
         }
 
         /// <summary>
