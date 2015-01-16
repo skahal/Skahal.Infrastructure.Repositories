@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Diagnostics.CodeAnalysis;
@@ -20,15 +18,29 @@ namespace Skahal.Infrastructure.Repositories.EntityFramework
     public abstract class EFRepositoryBase<TEntity, TId> : RepositoryBase<TEntity>
         where TEntity : EntityWithIdBase<TId>, IAggregateRoot
     {
+        #region Fields
+        private Func<DbContext> m_getContext;
+        #endregion
+
         #region Constructors
-		/// <summary>
-		/// Initializes a new instance of the
-		/// <see cref="Skahal.Infrastructure.Repositories.EntityFramework.EFRepositoryBase{TEntity, TId}" /> class.
-		/// </summary>
-		/// <param name="context">Context.</param>
+        /// <summary>
+        /// Initializes a new instance of the
+        /// <see cref="Skahal.Infrastructure.Repositories.EntityFramework.EFRepositoryBase{TEntity, TId}" /> class.
+        /// </summary>
+        /// <param name="context">The context.</param>
         protected EFRepositoryBase(DbContext context)
+            : this(() => context)
         {
-            Context = context;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the
+        /// <see cref="Skahal.Infrastructure.Repositories.EntityFramework.EFRepositoryBase{TEntity, TId}" /> class.
+        /// </summary>
+        /// <param name="getContext">The func to the context.</param>
+        protected EFRepositoryBase(Func<DbContext> getContext)
+        {
+            m_getContext = getContext;
             Context.Configuration.AutoDetectChangesEnabled = false;
         }
         #endregion
@@ -38,7 +50,13 @@ namespace Skahal.Infrastructure.Repositories.EntityFramework
         /// Gets the context.
         /// </summary>
         /// <value>The context.</value>
-        protected DbContext Context { get; private set; }
+        protected virtual DbContext Context
+        {
+            get
+            {
+                return m_getContext();
+            }
+        }
 
         /// <summary>
         /// Gets the db set.
@@ -99,7 +117,7 @@ namespace Skahal.Infrastructure.Repositories.EntityFramework
 
             return result;
         }
-       
+
         /// <summary>
         /// Finds all entities that matches the filter in a ascending order.
         /// </summary>
@@ -167,7 +185,7 @@ namespace Skahal.Infrastructure.Repositories.EntityFramework
         /// <param name="item">Item.</param>
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
         protected override void PersistNewItem(TEntity item)
-        {            
+        {
             DbSet.Add(item);
         }
 
@@ -180,13 +198,13 @@ namespace Skahal.Infrastructure.Repositories.EntityFramework
         {
             var entry = Context.Entry<TEntity>(item);
 
-            entry.State = EntityState.Modified;            
-        }            
+            entry.State = EntityState.Modified;
+        }
         #endregion
 
         #region Helpers
         /// <summary>
-        /// Logs the query.
+        /// Logs the query.'    
         /// </summary>
         /// <param name="query">Query.</param>
         [SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "query")]

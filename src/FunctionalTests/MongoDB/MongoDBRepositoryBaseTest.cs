@@ -105,6 +105,7 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 		}
 
 		[Test ()]
+        [Category("MongoDB")]
 		public void Add_NotCommitAndCommit_PersistsAfterCommit ()
 		{
 			var originalCount = m_target.CountAll ();
@@ -120,6 +121,7 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 		}
 
 		[Test ()]
+        [Category("MongoDB")]
 		public void Remove_NotCommitAndCommit_PersistsAfterCommit ()
 		{
 			var originalCount = m_target.CountAll ();
@@ -134,6 +136,7 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 		}
 
 		[Test ()]
+        [Category("MongoDB")]
 		public void CountAll_Args_Count ()
 		{
 			Assert.IsTrue (m_target.CountAll () == 10);
@@ -143,6 +146,7 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 		}
 
 		[Test ()]
+        [Category("MongoDB")]
 		public void FindAll_Args_Entities()
 		{
 			var actual = m_target.FindAll (f => true).ToList ();
@@ -165,6 +169,7 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 		}
 
 		[Test ()]
+        [Category("MongoDB")]
 		public void FindAllAscending_Args_Entities()
 		{
 			var actual = m_target.FindAllAscending (f => f.RemoteKey).ToList ();
@@ -184,6 +189,7 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 		}
 
 		[Test ()]
+        [Category("MongoDB")]
 		public void FindAllDescending_Args_Entities()
 		{
 			var actual = m_target.FindAllDescending (f => f.RemoteKey).ToList ();
@@ -203,6 +209,7 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 		}
 
 		[Test ()]
+        [Category("MongoDB")]
 		public void FindBy_Key_Entity()
 		{
 			var actual = m_target.FindBy (100);
@@ -218,6 +225,7 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 		}
 
 		[Test()]
+        [Category("MongoDB")]
 		public void DiffRepositories_CountAll_DiffCounts()
 		{
 			var userPreferenceRepository = new UserPreferenceMongoDBRepository ();

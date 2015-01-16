@@ -192,7 +192,7 @@ namespace Skahal.Infrastructure.Repositories.GData
         /// Gets the table.
         /// </summary>
         /// <returns>The table.</returns>
-        private ITable<TEntity> GetTable()
+        protected virtual ITable<TEntity> GetTable()
         {
             if (m_table == null)
             {
@@ -210,7 +210,7 @@ namespace Skahal.Infrastructure.Repositories.GData
         /// </summary>
         /// <returns>The row by identifier.</returns>
         /// <param name="key">Key.</param>
-        private IRow<TEntity> GetRowById(string key)
+        protected virtual IRow<TEntity> GetRowById(string key)
         {
             return GetTable().FindStructured("id={0}".With(key)).FirstOrDefault();
         }

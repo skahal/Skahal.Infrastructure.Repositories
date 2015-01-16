@@ -13,6 +13,16 @@ namespace Skahal.Infrastructure.Repositories.EntityFramework
     /// </summary>
     public class EFUnitOfWork : MemoryUnitOfWork
     {
+        #region Events
+        /// <summary>
+        /// Occurrs after a rollback is performed
+        /// </summary>
+        public event EventHandler Rollbacked;
+        #endregion
+        #region Fields
+        private Func<DbContext> m_createNewContext;
+        #endregion
+
         #region Constructors
         /// <summary>
         /// Initializes a new instance of the
@@ -20,10 +30,21 @@ namespace Skahal.Infrastructure.Repositories.EntityFramework
         /// </summary>
         /// <param name="context">The context.</param>
         public EFUnitOfWork(DbContext context)
+            : this(() => context)
         {
             ExceptionHelper.ThrowIfNull("context", context);
+        }
 
-            Context = context;
+        /// <summary>
+        /// Initializes a new instance of the
+        /// <see cref="Skahal.Infrastructure.Repositories.EntityFramework.EFUnitOfWork"/> class.
+        /// </summary>
+        /// <param name="createNewContext">The func to the context.</param>
+        public EFUnitOfWork(Func<DbContext> createNewContext)
+        {
+            ExceptionHelper.ThrowIfNull("getContext", createNewContext);
+            m_createNewContext = createNewContext;
+            Context = createNewContext();
         }
         #endregion
 
@@ -32,7 +53,7 @@ namespace Skahal.Infrastructure.Repositories.EntityFramework
         /// Gets the context.
         /// </summary>
         /// <value>The context.</value>
-        protected DbContext Context { get; private set; }
+        protected virtual DbContext Context { get; private set; }
         #endregion
 
         #region Methods
@@ -59,6 +80,28 @@ namespace Skahal.Infrastructure.Repositories.EntityFramework
                 }
 
                 throw new InvalidOperationException(msg.ToString(), ex);
+            }
+        }
+
+        /// <summary>
+        /// Undo changes made after the latest commit.
+        /// </summary>
+        public override void Rollback()
+        {
+            base.Rollback();
+            OnRollbacked(EventArgs.Empty);
+            Context = m_createNewContext();
+        }
+
+        /// <summary>
+        /// Raises the Rollbacked event.
+        /// </summary>
+        /// <param name="args">The event's arguments.</param>
+        protected virtual void OnRollbacked(EventArgs args)
+        {
+            if (Rollbacked != null)
+            {
+                Rollbacked(this, args);
             }
         }
         #endregion

@@ -9,6 +9,7 @@ namespace Skahal.Infrastructure.Repositories.Dropbox.FunctionalTests
     public class DropboxRepositoryBaseTest
     {
         [Test]
+        [Category("Dropbox")]
         public void PersistNewItem_Item_PersistedOnDropbox()
         {
             var unitOfWork = new MemoryUnitOfWork();
@@ -27,6 +28,7 @@ namespace Skahal.Infrastructure.Repositories.Dropbox.FunctionalTests
         }
 
         [Test]
+        [Category("Dropbox")]
         public void CountAll_Filter_FiltedResults()
         {
             var unitOfWork = new MemoryUnitOfWork();
@@ -52,6 +54,7 @@ namespace Skahal.Infrastructure.Repositories.Dropbox.FunctionalTests
         }
 
         [Test]
+        [Category("Dropbox")]
         public void FindAll_Filter_FiltedResults()
         {
             var unitOfWork = new MemoryUnitOfWork();
@@ -80,6 +83,7 @@ namespace Skahal.Infrastructure.Repositories.Dropbox.FunctionalTests
         }
 
         [Test]
+        [Category("Dropbox")]
         public void Pesists_Item_Persisted()
         {
             var unitOfWork = new MemoryUnitOfWork();

@@ -10,6 +10,7 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
     public class GDataRepositoryBaseTest
     {
         [Test]
+        [Category("GData")]
         public void PersistNewItem_Item_PersistedOnGData()
         {
             var unitOfWork = new MemoryUnitOfWork();
@@ -32,6 +33,7 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
         }
 
         [Test]
+        [Category("GData")]
         public void PersistUpdatedItem_Item_PersistedOnGData()
         {
             var unitOfWork = new MemoryUnitOfWork();
@@ -53,6 +55,7 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
         }
 
         [Test]
+        [Category("GData")]
         public void PersistDeletedItem_Item_PersistedOnGData()
         {
             var unitOfWork = new MemoryUnitOfWork();
