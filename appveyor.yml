@@ -10,6 +10,10 @@ version:
 before_build:
   - nuget restore .\src\Skahal.Infrastructure.Repositories.sln
 
+# configure environment
+install:
+  - cinst nunit
+
 # build configuration
 build:
   verbosity: minimal
