@@ -42,9 +42,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\mongocsharpdriver.1.9.2\lib\net35\MongoDB.Driver.dll</HintPath>
     </Reference>
-    <Reference Include="Skahal.Infrastructure.Framework, Version=1.0.5494.27376, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Skahal.Infrastructure.Framework.0.6.3\lib\net35\Skahal.Infrastructure.Framework.dll</HintPath>
+    <Reference Include="Skahal.Infrastructure.Framework, Version=1.0.5576.19712, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Skahal.Infrastructure.Framework.0.6.5\lib\net35\Skahal.Infrastructure.Framework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="nunit.framework" />
