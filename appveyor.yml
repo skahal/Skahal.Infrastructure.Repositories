@@ -8,7 +8,7 @@ version:
 
 # restore nuget packages before build
 before_build:
-  - nuget restore
+  - nuget restore ./Skahal.Infrastructure.Repositories.sln
 
 # build configuration
 build:
