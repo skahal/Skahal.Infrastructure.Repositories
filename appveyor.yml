@@ -1,4 +1,15 @@
-version: 1.0.{build}
-configuration: Release
+# 
+configuration:
+  Release
+
+# versioning
+version:
+  1.0.{build}
+
+# restore nuget packages before build
+before_build:
+  - nuget restore
+
+# build configuration
 build:
   verbosity: minimal
