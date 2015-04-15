@@ -14,7 +14,7 @@ before_build:
 install:
   - cinst nunit
   - cinst 7zip.commandline
-  - ps: "# Create mongodb and data directory\nmd $env:temp\\mongo\\data\n \n# Go to mongodb dir\nPush-Location $env:temp\\mongo\n \n# Download zipped mongodb binaries to mongodbdir\nInvoke-WebRequest https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-2.6.5.zip -OutFile mongodb.zip\n \n# Extract mongodb zip\ncmd /c 7za e mongodb.zip\n \n# Install mongodb as a windows service\ncmd /c $env:temp\\mongo\\mongod.exe --logpath=$env:temp\\mongo\\log --dbpath=$env:temp\\mongo\\data\\ --smallfiles --install\n \n# Sleep as a hack to fix an issue where the service sometimes does not finish installing quickly enough\nStart-Sleep -Seconds 5\n \n# Start mongodb service\nnet start mongodb\n \n# Return to last location, to run the build\nPop-Location\n \nWrite-Host\nWrite-Host \"monogdb installation complete\""
+  - ps: "# Create mongodb and data directory\nmd C:\\MongoDB\\bin\\data\n \n# Go to mongodb dir\nPush-Location C:\\MongoDB\\bin\n \n# Download zipped mongodb binaries to mongodbdir\nInvoke-WebRequest https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-2.6.5.zip -OutFile mongodb.zip\n \n# Extract mongodb zip\ncmd /c 7za e mongodb.zip\n \n# Install mongodb as a windows service\ncmd /c C:\\MongoDB\\bin\\mongod.exe --logpath=C:\\MongoDB\\bin\\log --dbpath=C:\\MongoDB\\bin\\data\\ --smallfiles --install\n \n# Sleep as a hack to fix an issue where the service sometimes does not finish installing quickly enough\nStart-Sleep -Seconds 5\n \n# Start mongodb service\nnet start mongodb\n \n# Return to last location, to run the build\nPop-Location\n \nWrite-Host\nWrite-Host \"monogdb installation complete\""
   
 
 # build configuration
