@@ -1,10 +1,11 @@
 Skahal.Infrastructure.Repositories
 ==================================
 
+[![Build status](https://ci.appveyor.com/api/projects/status/iver76hwd2gdgh1u?svg=true)](https://ci.appveyor.com/project/eduardobursa/skahal-infrastructure-repositories)
+
 [![Build Status](https://travis-ci.org/skahal/Skahal.Infrastructure.Repositories.png?branch=master)](https://travis-ci.org/skahal/Skahal.Infrastructure.Repositories)
 
 Skahal.Infrastructure.Framework.Repositories.IRepository<TEntity>'s implementations.
-
 
 --------
 
