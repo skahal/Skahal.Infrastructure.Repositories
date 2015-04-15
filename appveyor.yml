@@ -18,7 +18,7 @@ environment:
   GDataUsername:
     secure: JQxOkjmAt2VYlspjIvdEsA==
   GDataPassword:
-    secure: 8S0YkkCxc/29ozTQmW3Wpg==
+    secure: 3K11QKSigPhjBu3xJtUrjkFTGki2F9Q0q696js6UiWQ=
 
 # restore nuget packages before build
 before_build:
