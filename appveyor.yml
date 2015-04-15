@@ -15,6 +15,10 @@ install:
 environment:
   DropboxApiToken:
     secure: 0w2G9S1jUIqF/5+58twK62EoE8e1AlhLizcjJke6DIBgfW9/CpOj4uRO2elMYG1vVgS5DV7V03v3xzvf/ukwSFNCV3JNSLxcEEfzUEgFzgA=
+  GDataUsername:
+    secure: JQxOkjmAt2VYlspjIvdEsA==
+  GDataPassword:
+    secure: 8S0YkkCxc/29ozTQmW3Wpg==
 
 # restore nuget packages before build
 before_build:
