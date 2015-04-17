@@ -34,7 +34,8 @@ after_build:
   - nuget pack .\src\MongoDB\MongoDB.csproj -OutputDirectory .\src\nuget
   - nuget pack .\src\GData\GData.csproj -OutputDirectory .\src\nuget
   - nuget pack .\src\Dropbox\Dropbox.csproj -OutputDirectory .\src\nuget
-	
+
 # push artifacts
 artifacts:
   - path: .\src\nuget\*.nupkg
+	
