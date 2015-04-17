@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
-    <metadata>
-        <id>Skahal.Infrastructure.Repositories.EntityFramework</id>
-        <version>0.0.1</version>
-        <title>Skahal.Infrastructure.Repositories.EntityFramework</title>
-        <authors>Skahal</authors>
-        <owners>g1acomell1,eduardobursa</owners>
-        <projectUrl>https://github.com/skahal/Skahal.Infrastructure.Repositories</projectUrl>
-        <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Skahal.Infrastructure.Framework.Repositories.IRepository's EntityFramework implementation.</description>
-        <releaseNotes />
-        <copyright>Copyright 2013</copyright>
-        <tags>EntityFramework repository</tags>
-        <dependencies>
-            <dependency id="Skahal.Infrastructure.Framework" version="0.5.9" />
-        </dependencies>
-    </metadata>
+	<metadata>
+		<id>Skahal.Infrastructure.Repositories.EntityFramework</id>
+		<version>0.0.1</version>
+		<authors>Skahal</authors>
+		<owners>g1acomell1,eduardobursa</owners>
+		<projectUrl>https://github.com/skahal/Skahal.Infrastructure.Repositories</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Skahal.Infrastructure.Framework.Repositories.IRepository's EntityFramework implementation.</description>
+		<releaseNotes>First version.</releaseNotes>
+		<copyright>Copyright 2013</copyright>
+		<tags>EntityFramework repository</tags>
+		<dependencies>
+			<dependency id="Skahal.Infrastructure.Framework" version="0.5.9" />
+		</dependencies>
+		<files>
+			<file src="../EntityFramework/bin/Release/Skahal.Infrastructure.Repositories.EntityFramework.dll" target="lib\net35" />
+			<file src="../EntityFramework/bin/Release/Skahal.Infrastructure.Repositories.EntityFramework.pdb" target="lib\net35" />
+			<file src="../EntityFramework/bin/Release/Skahal.Infrastructure.Repositories.EntityFramework.xml" target="lib\net35" />
+		</files>
+	</metadata>
 </package>
