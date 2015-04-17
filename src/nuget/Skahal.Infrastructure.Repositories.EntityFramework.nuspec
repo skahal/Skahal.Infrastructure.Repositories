@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>Skahal.Infrastructure.Repositories.EntityFramework</id>
+        <version>0.0.1</version>
+        <title>Skahal.Infrastructure.Repositories.EntityFramework</title>
+        <authors>Skahal</authors>
+        <owners>g1acomell1,eduardobursa</owners>
+        <projectUrl>https://github.com/skahal/Skahal.Infrastructure.Repositories</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Skahal.Infrastructure.Framework.Repositories.IRepository's EntityFramework implementation.</description>
+        <releaseNotes />
+        <copyright>Copyright 2013</copyright>
+        <tags>EntityFramework repository</tags>
+        <dependencies>
+            <dependency id="Skahal.Infrastructure.Framework" version="0.5.9" />
+        </dependencies>
+    </metadata>
+</package>
