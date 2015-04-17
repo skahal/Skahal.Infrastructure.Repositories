@@ -27,3 +27,6 @@ before_build:
 # build configuration
 build:
   verbosity: minimal
+
+after_build:
+  - nuget pack .\src\nuget\Skahal.Infrastructure.Repositories.EntityFrameworl.nuspec
