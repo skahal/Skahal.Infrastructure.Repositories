@@ -20,6 +20,10 @@ environment:
   GDataPassword:
     secure: 3K11QKSigPhjBu3xJtUrjkFTGki2F9Q0q696js6UiWQ=
 
+nuget:
+  account_feed: true
+  project_feed: true
+
 # restore nuget packages before build
 before_build:
   - nuget restore .\src\Skahal.Infrastructure.Repositories.sln
