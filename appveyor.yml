@@ -30,3 +30,7 @@ build:
 
 after_build:
   - nuget pack .\src\nuget\Skahal.Infrastructure.Repositories.EntityFramework.nuspec
+
+# push artifacts
+artifacts:
+  - path: .\src\nuget\*.nupkg
