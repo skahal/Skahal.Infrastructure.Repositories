@@ -33,4 +33,4 @@ after_build:
 
 # push artifacts
 artifacts:
-  - path: '**\*.nupkg'
+  - path: .\src\nuget\*.nupkg
