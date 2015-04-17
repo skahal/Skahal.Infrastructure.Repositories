@@ -28,9 +28,13 @@ before_build:
 build:
   verbosity: minimal
 
+# create nuget packages =]
 after_build:
-  - nuget pack .\src\nuget\Skahal.Infrastructure.Repositories.EntityFramework.nuspec
-
+  - nuget pack .\src\EntityFramework\EntityFramework.csproj -OutputDirectory .\src\nuget
+  - nuget pack .\src\MongoDB\MongoDB.csproj -OutputDirectory .\src\nuget
+  - nuget pack .\src\GData\GData.csproj -OutputDirectory .\src\nuget
+  - nuget pack .\src\Dropbox\Dropbox.csproj -OutputDirectory .\src\nuget
+	
 # push artifacts
 artifacts:
   - path: .\src\nuget\*.nupkg
