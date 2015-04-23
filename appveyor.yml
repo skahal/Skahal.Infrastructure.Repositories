@@ -48,7 +48,7 @@ artifacts:
 deploy:
   - provider: GitHub
     tag:
-    release: "%system.GitVersion.SemVer%"
+    release: %system.GitVersion.SemVer%
     auth_token:
       secure: Bso0fBteIMnb1VCMAK2+ueXadGaMNdGVV22LlDIow8KI+4+LS/IDEazHwPoYqIne
     artifact: .\src\nuget\*.nupkg
