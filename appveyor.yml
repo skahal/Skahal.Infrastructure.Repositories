@@ -35,9 +35,9 @@ build:
 # create nuget packages =]
 after_build:
   - nuget pack .\src\EntityFramework\EntityFramework.csproj -Version {version} -OutputDirectory .\src\nuget
-  - nuget pack .\src\MongoDB\MongoDB.csproj -Version {version} -OutputDirectory .\src\nuget
-  - nuget pack .\src\GData\GData.csproj -Version {version} -OutputDirectory .\src\nuget
-  - nuget pack .\src\Dropbox\Dropbox.csproj -Version {version} -OutputDirectory .\src\nuget
+  - nuget pack .\src\MongoDB\MongoDB.csproj -Version '{version}' -OutputDirectory .\src\nuget
+  - nuget pack .\src\GData\GData.csproj -Version '{version}' -OutputDirectory .\src\nuget
+  - nuget pack .\src\Dropbox\Dropbox.csproj -Version '{version}' -OutputDirectory .\src\nuget
 
 # push artifacts
 artifacts:
