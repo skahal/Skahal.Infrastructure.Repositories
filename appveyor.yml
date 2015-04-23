@@ -42,3 +42,11 @@ after_build:
 # push artifacts
 artifacts:
   - path: .\src\nuget\*.nupkg
+	
+deploy:
+  - provider: GitHub
+    tag: RELEASE
+    release: v%APPVEYOR_BUILD_VERSION%
+    auth_token:
+      secure: Bso0fBteIMnb1VCMAK2+ueXadGaMNdGVV22LlDIow8KI+4+LS/IDEazHwPoYqIne
+    artifact: .\src\nuget\*.nupkg
