@@ -4,7 +4,7 @@ configuration:
 
 # build versioning
 version:
-  1.0.{build}
+  0.5.{build}
 
 # configure environment / install required software in build process
 install:
