@@ -10,7 +10,9 @@ version:
 install:
   - cinst nunit
   - cinst 7zip.commandline
+  - cinst GitVersion.Portable
   - ps: "# Create mongodb and data directory\nmd C:\\MongoDB\\bin\\data\n \n# Go to mongodb dir\nPush-Location C:\\MongoDB\\bin\n \n# Download zipped mongodb binaries to mongodbdir\nInvoke-WebRequest https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-2.6.5.zip -OutFile mongodb.zip\n \n# Extract mongodb zip\ncmd /c 7za e mongodb.zip\n \n# Install mongodb as a windows service\ncmd /c C:\\MongoDB\\bin\\mongod.exe --logpath=C:\\MongoDB\\bin\\log --dbpath=C:\\MongoDB\\bin\\data\\ --smallfiles --install\n \n# Sleep as a hack to fix an issue where the service sometimes does not finish installing quickly enough\nStart-Sleep -Seconds 5\n \n# Start mongodb service\nnet start mongodb\n \n# Return to last location, to run the build\nPop-Location\n \nWrite-Host\nWrite-Host \"monogdb installation complete\""
+  - ps: GitVersion /output buildserver /updateassemblyinfo true
 
 environment:
   DropboxApiToken:
@@ -34,10 +36,10 @@ build:
 
 # create nuget packages =]
 after_build:
-  - nuget pack .\src\EntityFramework\EntityFramework.csproj -Version %APPVEYOR_BUILD_VERSION% -OutputDirectory .\src\nuget
-  - nuget pack .\src\MongoDB\MongoDB.csproj -Version %APPVEYOR_BUILD_VERSION% -OutputDirectory .\src\nuget
-  - nuget pack .\src\GData\GData.csproj -Version %APPVEYOR_BUILD_VERSION% -OutputDirectory .\src\nuget
-  - nuget pack .\src\Dropbox\Dropbox.csproj -Version %APPVEYOR_BUILD_VERSION% -OutputDirectory .\src\nuget
+  - nuget pack .\src\EntityFramework\EntityFramework.csproj -Version %system.GitVersion.NuGetVersionV2% -OutputDirectory .\src\nuget
+  - nuget pack .\src\MongoDB\MongoDB.csproj -Version %system.GitVersion.NuGetVersionV2% -OutputDirectory .\src\nuget
+  - nuget pack .\src\GData\GData.csproj -Version %system.GitVersion.NuGetVersionV2% -OutputDirectory .\src\nuget
+  - nuget pack .\src\Dropbox\Dropbox.csproj -Version %system.GitVersion.NuGetVersionV2% -OutputDirectory .\src\nuget
 
 # push artifacts
 artifacts:
@@ -48,5 +50,6 @@ deploy:
     tag: RELEASE
     release: v%APPVEYOR_BUILD_VERSION%
     auth_token:
+      secure: Bso0fBteIMnb1VCMAK2+ueXadGaMNdGVV22LlDIow8KI+4+LS/IDEazHwPoYqIne
       secure: Bso0fBteIMnb1VCMAK2+ueXadGaMNdGVV22LlDIow8KI+4+LS/IDEazHwPoYqIne
     artifact: .\src\nuget\*.nupkg
