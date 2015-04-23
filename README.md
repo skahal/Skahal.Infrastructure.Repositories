@@ -1,6 +1,6 @@
 Skahal.Infrastructure.Repositories
 ==================================
-
+[![License](http://img.shields.io/:license-mit-blue.svg)](https://raw.githubusercontent.com/eduardobursa/Skahal.Infrastructure.Repositories/master/LICENSE)
 [![Build status](https://ci.appveyor.com/api/projects/status/iver76hwd2gdgh1u?svg=true)](https://ci.appveyor.com/project/eduardobursa/skahal-infrastructure-repositories)
 [![Coverage Status](https://coveralls.io/repos/eduardobursa/Skahal.Infrastructure.Repositories/badge.svg)](https://coveralls.io/r/eduardobursa/Skahal.Infrastructure.Repositories)
 
