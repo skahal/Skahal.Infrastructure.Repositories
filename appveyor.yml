@@ -36,10 +36,10 @@ build:
 
 # create nuget packages =]
 after_build:
-  - nuget pack .\src\EntityFramework\EntityFramework.csproj -Version %system.GitVersion.NuGetVersionV2% -OutputDirectory .\src\nuget
-  - nuget pack .\src\MongoDB\MongoDB.csproj -Version %system.GitVersion.NuGetVersionV2% -OutputDirectory .\src\nuget
-  - nuget pack .\src\GData\GData.csproj -Version %system.GitVersion.NuGetVersionV2% -OutputDirectory .\src\nuget
-  - nuget pack .\src\Dropbox\Dropbox.csproj -Version %system.GitVersion.NuGetVersionV2% -OutputDirectory .\src\nuget
+  - nuget pack .\src\EntityFramework\EntityFramework.csproj -Version %GitVersion_NuGetVersionV2% -OutputDirectory .\src\nuget
+  - nuget pack .\src\MongoDB\MongoDB.csproj -Version %GitVersion_NuGetVersionV2% -OutputDirectory .\src\nuget
+  - nuget pack .\src\GData\GData.csproj -Version %GitVersion_NuGetVersionV2% -OutputDirectory .\src\nuget
+  - nuget pack .\src\Dropbox\Dropbox.csproj -Version %GitVersion_NuGetVersionV2% -OutputDirectory .\src\nuget
 
 # push artifacts
 artifacts:
@@ -48,7 +48,7 @@ artifacts:
 deploy:
   - provider: GitHub
     tag:
-    release: '%system.GitVersion.SemVer%'
+    release: %GitVersion_SemVer%
     auth_token:
       secure: Bso0fBteIMnb1VCMAK2+ueXadGaMNdGVV22LlDIow8KI+4+LS/IDEazHwPoYqIne
     artifact: .\src\nuget\*.nupkg
