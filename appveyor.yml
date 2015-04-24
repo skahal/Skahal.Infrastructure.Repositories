@@ -26,7 +26,7 @@ nuget:
 
 # restore nuget packages before build
 before_build:
-  - nuget restore .\src\Skahal.Infrastructure.Repositories.sln
+  - nuget restore ".\src\Skahal.Infrastructure.Repositories.sln"
 
 # build configuration
 build:
