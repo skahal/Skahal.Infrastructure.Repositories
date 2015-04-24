@@ -1,7 +1,7 @@
 # Skahal.Infrastructure.Repositories #
 
 [![Build status](https://ci.appveyor.com/api/projects/status/iver76hwd2gdgh1u?svg=true)](https://ci.appveyor.com/project/eduardobursa/skahal-infrastructure-repositories)
-[![Coverage Status](https://coveralls.io/repos/eduardobursa/Skahal.Infrastructure.Repositories/badge.svg)](https://coveralls.io/r/eduardobursa/Skahal.Infrastructure.Repositories)
+[![Coverage Status](https://coveralls.io/repos/eduardobursa/Skahal.Infrastructure.Repositories/badge.svg?branch=master)](https://coveralls.io/r/eduardobursa/Skahal.Infrastructure.Repositories?branch=master)
 
 ## License ##
 
