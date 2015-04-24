@@ -26,10 +26,11 @@ nuget:
 
 # restore nuget packages before build
 before_build:
-  - nuget restore ".\src\Skahal.Infrastructure.Repositories.sln"
+  - nuget restore .\src\Skahal.Infrastructure.Repositories.sln
 
 # build configuration
 build:
+  project: .\src\Skahal.Infrastructure.Repositories.sln
   verbosity: minimal
 
 test_script:
