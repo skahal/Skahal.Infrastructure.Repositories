@@ -47,4 +47,4 @@ deploy:
     release: v$(GitVersion_SemVer)
     auth_token:
       secure: iHyv/sJYu1rzs66O1fn0FECET2w27wKKUUEzqwvqV4uL5DvlZa7FwpM7LKdxgV6E
-    artifact: .\src\nuget\*.nupkg
+    artifact: src\nuget\*.nupkg
