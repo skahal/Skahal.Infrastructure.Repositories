@@ -1,23 +1,38 @@
 Skahal.Infrastructure.Repositories
 ==================================
-[![License](http://img.shields.io/:license-mit-blue.svg)](https://raw.githubusercontent.com/eduardobursa/Skahal.Infrastructure.Repositories/master/LICENSE)
+[![License](http://img.shields.io/:license-MIT-blue.svg)](https://raw.githubusercontent.com/eduardobursa/Skahal.Infrastructure.Repositories/master/LICENSE)
 [![Build status](https://ci.appveyor.com/api/projects/status/iver76hwd2gdgh1u?svg=true)](https://ci.appveyor.com/project/eduardobursa/skahal-infrastructure-repositories)
 [![Coverage Status](https://coveralls.io/repos/eduardobursa/Skahal.Infrastructure.Repositories/badge.svg)](https://coveralls.io/r/eduardobursa/Skahal.Infrastructure.Repositories)
 
-Skahal.Infrastructure.Framework.Repositories.IRepository<TEntity>'s implementations.
-
---------
-
 Features
 ===
-- MongoDB (`MongoDBRepositoryBase`)
-- EntityFramework (`EFRepositoryBase`)
-- GData (Google Docs Spreadsheet) (`GDataRepositoryBase`)
-- DropboxRepositoryBase (Datastore) (`DropboxRepositoryBase`)
 - Mono support
 - Fully tested on Windows and MacOSX
 - Tests coveraged 
-- Good (and well used) design patterns  
+- Good (and well used) design patterns
+
+Implementations
+===
+
+MongoDB (`MongoDBRepositoryBase`)
+
+[![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.MongoDB.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.MongoDB/)
+[![NuGet](https://img.shields.io/nuget/dt/Skahal.Infrastructure.Repositories.MongoDB.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.MongoDB/)
+
+EntityFramework (`EFRepositoryBase`)
+
+[![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.EntityFramework.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.EntityFramework/)
+[![NuGet](https://img.shields.io/nuget/dt/Skahal.Infrastructure.Repositories.EntityFramework.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.EntityFramework/)
+
+GData (Google Docs Spreadsheet) (`GDataRepositoryBase`)
+
+[![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.GData.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.GData/)
+[![NuGet](https://img.shields.io/nuget/dt/Skahal.Infrastructure.Repositories.GData.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.GData/)
+
+Dropbox (DropboxRepositoryBase) (Datastore) (`DropboxRepositoryBase`)
+
+[![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.Dropbox.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.Dropbox/)
+[![NuGet](https://img.shields.io/nuget/dt/Skahal.Infrastructure.Repositories.Dropbox.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.Dropbox/)
 
 --------
 
