@@ -17,6 +17,8 @@ environment:
     secure: JQxOkjmAt2VYlspjIvdEsA==
   GDataPassword:
     secure: 3K11QKSigPhjBu3xJtUrjkFTGki2F9Q0q696js6UiWQ=
+  COVERALLS_REPO_TOKEN:
+    secure: IoqQf0p+iF6kEc8Gm2pMPsn+IZOegFFHLLm+iSj6IbeqpYnbdMXtSUiuRbzMOl3d
 
 nuget:
   account_feed: true
