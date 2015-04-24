@@ -50,5 +50,5 @@ deploy:
     tag:
     release: "%GitVersion_SemVer%"
     auth_token:
-      secure: Bso0fBteIMnb1VCMAK2+ueXadGaMNdGVV22LlDIow8KI+4+LS/IDEazHwPoYqIne
+      secure: iHyv/sJYu1rzs66O1fn0FECET2w27wKKUUEzqwvqV4uL5DvlZa7FwpM7LKdxgV6E
     artifact: .\src\nuget\*.nupkg
