@@ -50,8 +50,10 @@ artifacts:
 
 deploy:
   - provider: GitHub
-    tag:
-    release: v$(GitVersion_SemVer)
+    tag: v$(GitVersion_Semver)
+    release: v$(GitVersion_MajorMinorPatch)
     auth_token:
       secure: iHyv/sJYu1rzs66O1fn0FECET2w27wKKUUEzqwvqV4uL5DvlZa7FwpM7LKdxgV6E
+    draft: true
+    prerelease: true
     artifact: /.*\.nupkg/
