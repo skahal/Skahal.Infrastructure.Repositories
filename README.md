@@ -10,9 +10,9 @@
 Licensed under the The MIT License (MIT).
 In others words, you can use this library for developement any kind of software: open source, commercial, proprietary and alien.
 
-# Implementations / Flavors #
+## Implementations / Flavors ##
 
-## MongoDB ( `MongoDBRepositoryBase` ) ##
+### MongoDB ( `MongoDBRepositoryBase` ) ###
 
 [![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.MongoDB.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.MongoDB/)
 [![NuGet](https://img.shields.io/nuget/dt/Skahal.Infrastructure.Repositories.MongoDB.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.MongoDB/)
@@ -23,7 +23,7 @@ In others words, you can use this library for developement any kind of software:
 	</span>
 </div>
 
-## EntityFramework ( `EFRepositoryBase` ) ##
+### EntityFramework ( `EFRepositoryBase` ) ###
 
 [![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.EntityFramework.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.EntityFramework/)
 [![NuGet](https://img.shields.io/nuget/dt/Skahal.Infrastructure.Repositories.EntityFramework.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.EntityFramework/)
@@ -34,7 +34,7 @@ In others words, you can use this library for developement any kind of software:
 	</span>
 </div>
 
-## GData (Google Docs Spreadsheet) ( `GDataRepositoryBase` ) ##
+### GData (Google Docs Spreadsheet) ( `GDataRepositoryBase` ) ###
 
 [![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.GData.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.GData/)
 [![NuGet](https://img.shields.io/nuget/dt/Skahal.Infrastructure.Repositories.GData.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.GData/)
@@ -45,7 +45,7 @@ In others words, you can use this library for developement any kind of software:
 	</span>
 </div>
 
-## Dropbox (DropboxRepositoryBase) (Datastore) ( `DropboxRepositoryBase` ) ##
+### Dropbox (DropboxRepositoryBase) (Datastore) ( `DropboxRepositoryBase` ) ###
 
 [![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.Dropbox.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.Dropbox/)
 [![NuGet](https://img.shields.io/nuget/dt/Skahal.Infrastructure.Repositories.Dropbox.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.Dropbox/)
@@ -56,19 +56,19 @@ In others words, you can use this library for developement any kind of software:
 	</span>
 </div>
 
-# Features #
+## Features ##
 
 - Mono support
 - Fully tested on Windows and MacOSX
 - Tests coveraged 
 - Good (and well used) design patterns
 
-# Change Log #
+## Change Log ##
 
 - 0.5.1 HelperSharp updated.
 - 0.5.0 First version.
  		
-# How to improve it? #
+## How to improve it? ##
 
 Create a fork of [Skahal.Infrastructure.Repositories](https://github.com/skahal/Skahal.Infrastructure.Repositories/fork). 
 
