@@ -48,14 +48,6 @@ PM> `Install-Package Skahal.Infrastructure.Repositories.MongoDB`
 
 - 0.5.1 HelperSharp updated.
 - 0.5.0 First version.
-
-
-## Roadmap ##
-
-- Publish NuGet packages for:
-	- EntityFramework
-	- GData
-	- Dropbox
  		
 ## How to improve it? ##
 
