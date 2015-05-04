@@ -17,6 +17,15 @@ In others words, you can use this library for developement any kind of software:
 [![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.MongoDB.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.MongoDB/)
 [![NuGet](https://img.shields.io/nuget/dt/Skahal.Infrastructure.Repositories.MongoDB.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.MongoDB/)
 
+
+<div>
+	<p>
+		<code style="box-shadow: 2px 2px 3px #6E6E6E;color: #E2E2E2;display: block;font: 1.5em/1.5em "andale mono","lucida console",monospace; overflow: auto; padding: 15px; background-color: #202020;border: 4px solid #C0C0C0;border-radius: 5px;">
+			PM&gt; Install-Package Skahal.Infrastructure.Repositories.MongoDB
+		</code>
+	</p>
+</div>
+
 ***EntityFramework*** ( `EFRepositoryBase` )
 
 [![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.EntityFramework.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.EntityFramework/)
