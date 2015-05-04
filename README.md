@@ -10,55 +10,65 @@
 Licensed under the The MIT License (MIT).
 In others words, you can use this library for developement any kind of software: open source, commercial, proprietary and alien.
 
-## Implementations / Flavors ##
+# Implementations / Flavors #
 
-***MongoDB*** ( `MongoDBRepositoryBase` )
+## MongoDB ( `MongoDBRepositoryBase` ) ##
 
 [![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.MongoDB.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.MongoDB/)
 [![NuGet](https://img.shields.io/nuget/dt/Skahal.Infrastructure.Repositories.MongoDB.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.MongoDB/)
 
-
-<div>
-	<p>
-		<code style="box-shadow: 2px 2px 3px #6E6E6E;color: #E2E2E2;display: block;font: 1.5em/1.5em "andale mono","lucida console",monospace; overflow: auto; padding: 15px; background-color: #202020;border: 4px solid #C0C0C0;border-radius: 5px;">
-			PM&gt; Install-Package Skahal.Infrastructure.Repositories.MongoDB
-		</code>
-	</p>
+<div style="background-color: #202020; border: 4px solid #C0C0C0; border-radius: 5px; box-shadow: 2px 2px 3px #6E6E6E; color: #E2E2E2;display: block; font: 1.5em/1.5em 'andale mono','lucida console',monospace; overflow: auto;padding: 15px;">
+	<span>
+		PM&gt; Install-Package Skahal.Infrastructure.Repositories.MongoDB
+	</span>
 </div>
 
-***EntityFramework*** ( `EFRepositoryBase` )
+## EntityFramework ( `EFRepositoryBase` ) ##
 
 [![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.EntityFramework.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.EntityFramework/)
 [![NuGet](https://img.shields.io/nuget/dt/Skahal.Infrastructure.Repositories.EntityFramework.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.EntityFramework/)
 
-***GData*** (Google Docs Spreadsheet) ( `GDataRepositoryBase` )
+<div style="background-color: #202020; border: 4px solid #C0C0C0; border-radius: 5px; box-shadow: 2px 2px 3px #6E6E6E; color: #E2E2E2;display: block; font: 1.5em/1.5em 'andale mono','lucida console',monospace; overflow: auto;padding: 15px;">
+	<span>
+		PM&gt; Install-Package Skahal.Infrastructure.Repositories.EntityFramework
+	</span>
+</div>
+
+## GData (Google Docs Spreadsheet) ( `GDataRepositoryBase` ) ##
 
 [![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.GData.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.GData/)
 [![NuGet](https://img.shields.io/nuget/dt/Skahal.Infrastructure.Repositories.GData.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.GData/)
 
-***Dropbox*** (DropboxRepositoryBase) (Datastore) ( `DropboxRepositoryBase` )
+<div style="background-color: #202020; border: 4px solid #C0C0C0; border-radius: 5px; box-shadow: 2px 2px 3px #6E6E6E; color: #E2E2E2;display: block; font: 1.5em/1.5em 'andale mono','lucida console',monospace; overflow: auto;padding: 15px;">
+	<span>
+		PM&gt; Install-Package Skahal.Infrastructure.Repositories.GData
+	</span>
+</div>
+
+## Dropbox (DropboxRepositoryBase) (Datastore) ( `DropboxRepositoryBase` ) ##
 
 [![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.Dropbox.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.Dropbox/)
 [![NuGet](https://img.shields.io/nuget/dt/Skahal.Infrastructure.Repositories.Dropbox.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.Dropbox/)
 
-## Features ##
+<div style="background-color: #202020; border: 4px solid #C0C0C0; border-radius: 5px; box-shadow: 2px 2px 3px #6E6E6E; color: #E2E2E2;display: block; font: 1.5em/1.5em 'andale mono','lucida console',monospace; overflow: auto;padding: 15px;">
+	<span>
+		PM&gt; Install-Package Skahal.Infrastructure.Repositories.Dropbox
+	</span>
+</div>
+
+# Features #
 
 - Mono support
 - Fully tested on Windows and MacOSX
 - Tests coveraged 
 - Good (and well used) design patterns
 
-
-## Setup ##
-
-PM> `Install-Package Skahal.Infrastructure.Repositories.MongoDB`
-
-## Change Log ##
+# Change Log #
 
 - 0.5.1 HelperSharp updated.
 - 0.5.0 First version.
  		
-## How to improve it? ##
+# How to improve it? #
 
 Create a fork of [Skahal.Infrastructure.Repositories](https://github.com/skahal/Skahal.Infrastructure.Repositories/fork). 
 
