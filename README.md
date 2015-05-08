@@ -27,6 +27,8 @@ In others words, you can use this library for developement any kind of software:
 	</span>
 </div>
 
+----------
+
 **EntityFramework** ( `EFRepositoryBase` )
 
 [![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.EntityFramework.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.EntityFramework/)
@@ -38,6 +40,8 @@ In others words, you can use this library for developement any kind of software:
 	</span>
 </div>
 
+----------
+
 **GData** (Google Docs Spreadsheet) ( `GDataRepositoryBase` )
 
 [![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.GData.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.GData/)
@@ -48,6 +52,8 @@ In others words, you can use this library for developement any kind of software:
 		PM&gt; Install-Package Skahal.Infrastructure.Repositories.GData
 	</span>
 </div>
+
+----------
 
 **Dropbox** (DropboxRepositoryBase) (Datastore) ( `DropboxRepositoryBase` )
 
@@ -66,11 +72,6 @@ In others words, you can use this library for developement any kind of software:
 - Fully tested on Windows and MacOSX
 - Tests coveraged 
 - Good (and well used) design patterns
-
-## Change Log ##
-
-- 0.5.1 HelperSharp updated.
-- 0.5.0 First version.
  		
 ## How to improve it? ##
 
