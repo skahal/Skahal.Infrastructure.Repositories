@@ -4,8 +4,8 @@ configuration: Release
 
 # configure environment / install required software in build process
 install:
-  - cinst nunit
-  - cinst 7zip.commandline
+#  - cinst nunit
+#  - cinst 7zip.commandline
   - cinst GitVersion.Portable
   - ps: "# Create mongodb and data directory\nmd C:\\MongoDB\\bin\\data\n \n# Go to mongodb dir\nPush-Location C:\\MongoDB\\bin\n \n# Download zipped mongodb binaries to mongodbdir\nInvoke-WebRequest https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-2.6.5.zip -OutFile mongodb.zip\n \n# Extract mongodb zip\ncmd /c 7za e mongodb.zip\n \n# Install mongodb as a windows service\ncmd /c C:\\MongoDB\\bin\\mongod.exe --logpath=C:\\MongoDB\\bin\\log --dbpath=C:\\MongoDB\\bin\\data\\ --smallfiles --install\n \n# Sleep as a hack to fix an issue where the service sometimes does not finish installing quickly enough\nStart-Sleep -Seconds 5\n \n# Start mongodb service\nnet start mongodb\n \n# Return to last location, to run the build\nPop-Location\n \nWrite-Host\nWrite-Host \"monogdb installation complete\""
   - ps: GitVersion /output buildserver /updateassemblyinfo true
@@ -51,8 +51,8 @@ artifacts:
 
 deploy:
   - provider: GitHub
-    tag: v$(GitVersion_InformationalVersion)
-    release: v$(GitVersion_MajorMinorPatch)
+    tag: v$(GitVersion_SemVer)
+    release: v$(GitVersion_SemVer)
     auth_token:
       secure: iHyv/sJYu1rzs66O1fn0FECET2w27wKKUUEzqwvqV4uL5DvlZa7FwpM7LKdxgV6E
     draft: false
