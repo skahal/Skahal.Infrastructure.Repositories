@@ -12,25 +12,53 @@ In others words, you can use this library for developement any kind of software:
 
 ## Implementations / Flavors ##
 
-***MongoDB*** ( `MongoDBRepositoryBase` )
+<style>
+	.nuget {background-color: #202020; border: 4px solid #C0C0C0; border-radius: 5px; box-shadow: 2px 2px 3px #6E6E6E; color: #E2E2E2;display: block; font: 1.5em/1.5em 'andale mono','lucida console',monospace; overflow: auto;padding: 15px;}
+</style>
+
+**MongoDB** ( `MongoDBRepositoryBase` )
 
 [![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.MongoDB.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.MongoDB/)
 [![NuGet](https://img.shields.io/nuget/dt/Skahal.Infrastructure.Repositories.MongoDB.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.MongoDB/)
 
-***EntityFramework*** ( `EFRepositoryBase` )
+<div class="nuget">
+	<span>
+		PM&gt; Install-Package Skahal.Infrastructure.Repositories.MongoDB
+	</span>
+</div>
+
+**EntityFramework** ( `EFRepositoryBase` )
 
 [![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.EntityFramework.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.EntityFramework/)
 [![NuGet](https://img.shields.io/nuget/dt/Skahal.Infrastructure.Repositories.EntityFramework.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.EntityFramework/)
 
-***GData*** (Google Docs Spreadsheet) ( `GDataRepositoryBase` )
+<div class="nuget">
+	<span>
+		PM&gt; Install-Package Skahal.Infrastructure.Repositories.EntityFramework
+	</span>
+</div>
+
+**GData** (Google Docs Spreadsheet) ( `GDataRepositoryBase` )
 
 [![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.GData.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.GData/)
 [![NuGet](https://img.shields.io/nuget/dt/Skahal.Infrastructure.Repositories.GData.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.GData/)
 
-***Dropbox*** (DropboxRepositoryBase) (Datastore) ( `DropboxRepositoryBase` )
+<div class="nuget">
+	<span>
+		PM&gt; Install-Package Skahal.Infrastructure.Repositories.GData
+	</span>
+</div>
+
+**Dropbox** (DropboxRepositoryBase) (Datastore) ( `DropboxRepositoryBase` )
 
 [![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.Dropbox.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.Dropbox/)
 [![NuGet](https://img.shields.io/nuget/dt/Skahal.Infrastructure.Repositories.Dropbox.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.Dropbox/)
+
+<div class="nuget">
+	<span>
+		PM&gt; Install-Package Skahal.Infrastructure.Repositories.Dropbox
+	</span>
+</div>
 
 ## Features ##
 
@@ -39,23 +67,10 @@ In others words, you can use this library for developement any kind of software:
 - Tests coveraged 
 - Good (and well used) design patterns
 
-
-## Setup ##
-
-PM> `Install-Package Skahal.Infrastructure.Repositories.MongoDB`
-
 ## Change Log ##
 
 - 0.5.1 HelperSharp updated.
 - 0.5.0 First version.
-
-
-## Roadmap ##
-
-- Publish NuGet packages for:
-	- EntityFramework
-	- GData
-	- Dropbox
  		
 ## How to improve it? ##
 
