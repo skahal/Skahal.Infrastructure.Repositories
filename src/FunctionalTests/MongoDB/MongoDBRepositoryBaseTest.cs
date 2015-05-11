@@ -31,40 +31,41 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
             });
 
 #if !TRAVIS_CI
-            ProcessHelper.KillAll("mongod");
-            var rootDir = VSProjectHelper.GetProjectFolderPath("FunctionalTests");
+						ProcessHelper.KillAll("mongod");
+						var rootDir = VSProjectHelper.GetProjectFolderPath("FunctionalTests");
 
-            var m_mongodPaths = new string[] {
-				"/Applications/mongodb/bin/mongod",
-				Path.Combine(rootDir, "bin/debug/mongodb/mongod"),
-				"mongod"
-			};
+						var m_mongodPaths = new string[] {
+							"/Applications/mongodb/bin/mongod",
+							Path.Combine(rootDir, "bin/debug/mongodb/mongod"),
+							"mongod",
+							@"C:\MongoDB\bin\mongod.exe"
+						};
 
-            var dbPath = Path.Combine(rootDir, "db");
-            var logPath = Path.Combine(dbPath, "db.log");
-            DirectoryHelper.DeleteIfNotExists(dbPath);
-            DirectoryHelper.CreateIfNotExists(dbPath);
+						var dbPath = Path.Combine(rootDir, "db");
+						var logPath = Path.Combine(dbPath, "db.log");
+						DirectoryHelper.DeleteIfNotExists(dbPath);
+						DirectoryHelper.CreateIfNotExists(dbPath);
 
-            string mongodPath = null;
+						string mongodPath = null;
 
-            foreach (var p in m_mongodPaths)
-            {
-                if (File.Exists(p))
-                {
-                    mongodPath = p;
-                    break;
-                }
-            }
+						foreach (var p in m_mongodPaths)
+						{
+							if (File.Exists(p))
+							{
+								mongodPath = p;
+								break;
+							}
+						}
 
-            if (String.IsNullOrEmpty(mongodPath))
-            {
-                throw new InvalidOperationException("There is no mongod in the following paths: {0}. Please, check if MongoDB is installed.".With(String.Join(", ", m_mongodPaths)));
-            }
+						if (String.IsNullOrEmpty(mongodPath))
+						{
+							throw new InvalidOperationException("There is no mongod in the following paths: {0}. Please, check if MongoDB is installed.".With(String.Join(", ", m_mongodPaths)));
+						}
 
-            Console.WriteLine("Using mongod in path: {0}.", mongodPath);
-            ProcessHelper.Run(mongodPath, "--dbpath {0} --logpath {1}".With(dbPath, logPath), false);
+						Console.WriteLine("Using mongod in path: {0}.", mongodPath);
+						ProcessHelper.Run(mongodPath, "--dbpath {0} --logpath {1}".With(dbPath, logPath), false);
 
-            FileHelper.WaitForFileContentContains(logPath, "waiting for connections");
+						FileHelper.WaitForFileContentContains(logPath, "waiting for connections");
 #endif
         }
 

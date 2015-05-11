@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+	<metadata>
+		<id>Skahal.Infrastructure.Repositories.GData</id>
+		<version>$version$</version>
+		<authors>Skahal</authors>
+		<owners>g1acomell1, eduardobursa</owners>
+		<projectUrl>https://github.com/skahal/Skahal.Infrastructure.Repositories</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Skahal.Infrastructure.Framework.Repositories.IRepository's GData implementation.</description>
+		<releaseNotes></releaseNotes>
+		<copyright>Copyright 2013</copyright>
+		<tags>GData repository</tags>
+		<dependencies>
+			<dependency id="Skahal.Infrastructure.Framework" version="0.5.9" />
+			<dependency id="GDataDB" version="0.5.0.0" />
+			<dependency id="GDataDB.Linq" version="0.5.0.0" />
+			<dependency id="Google.GData.AccessControl" version="2.2.0.0" />
+			<dependency id="Google.GData.Client" version="2.2.0.0" />
+			<dependency id="Google.GData.Documents" version="2.2.0.0" />
+			<dependency id="Google.GData.Extensions" version="2.2.0.0" />
+			<dependency id="Google.GData.Spreadsheets" version="2.2.0.0" />
+			<dependency id="Newtonsoft.Json" version="6.0.3" />
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="bin\Release\Skahal.Infrastructure.Repositories.GData.dll" target="lib\net40\" />
+		<file src="bin\Release\Skahal.Infrastructure.Repositories.GData.pdb" target="lib\net40\" />
+		<file src="bin\Release\Skahal.Infrastructure.Repositories.GData.xml" target="lib\net40\" />
+	</files>
+</package>

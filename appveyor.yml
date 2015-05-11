@@ -1,0 +1,60 @@
+skip_tags: true
+version: 0.5.{build}
+configuration: Release
+
+# configure environment / install required software in build process
+install:
+  - cinst nunit
+  - cinst 7zip.commandline
+  - cinst GitVersion.Portable
+  - ps: "# Create mongodb and data directory\nmd C:\\MongoDB\\bin\\data\n \n# Go to mongodb dir\nPush-Location C:\\MongoDB\\bin\n \n# Download zipped mongodb binaries to mongodbdir\nInvoke-WebRequest https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-2.6.5.zip -OutFile mongodb.zip\n \n# Extract mongodb zip\ncmd /c 7za e mongodb.zip\n \n# Install mongodb as a windows service\ncmd /c C:\\MongoDB\\bin\\mongod.exe --logpath=C:\\MongoDB\\bin\\log --dbpath=C:\\MongoDB\\bin\\data\\ --smallfiles --install\n \n# Sleep as a hack to fix an issue where the service sometimes does not finish installing quickly enough\nStart-Sleep -Seconds 5\n \n# Start mongodb service\nnet start mongodb\n \n# Return to last location, to run the build\nPop-Location\n \nWrite-Host\nWrite-Host \"monogdb installation complete\""
+  - ps: GitVersion /output buildserver /updateassemblyinfo true
+  - ps: $env:GIT_PRE_RELEASE = !$env:GitVersion_BranchName.Equals("release")
+
+environment:
+  DropboxApiToken:
+    secure: 0w2G9S1jUIqF/5+58twK62EoE8e1AlhLizcjJke6DIBgfW9/CpOj4uRO2elMYG1vVgS5DV7V03v3xzvf/ukwSFNCV3JNSLxcEEfzUEgFzgA=
+  GDataUsername:
+    secure: JQxOkjmAt2VYlspjIvdEsA==
+  GDataPassword:
+    secure: 3K11QKSigPhjBu3xJtUrjkFTGki2F9Q0q696js6UiWQ=
+  COVERALLS_REPO_TOKEN:
+    secure: IoqQf0p+iF6kEc8Gm2pMPsn+IZOegFFHLLm+iSj6IbeqpYnbdMXtSUiuRbzMOl3d
+
+nuget:
+  account_feed: true
+  project_feed: true
+
+# restore nuget packages before build
+before_build:
+  - nuget restore .\src\Skahal.Infrastructure.Repositories.sln
+
+# build configuration
+build:
+  project: .\src\Skahal.Infrastructure.Repositories.sln
+  verbosity: minimal
+
+test_script:
+  - ps: .\src\packages\OpenCover.4.5.3522\OpenCover.Console.exe -register:user -target:nunit-console.exe -register:user "-targetargs:""src\FunctionalTests\bin\$env:CONFIGURATION\Skahal.Infrastructure.Repositories.FunctionalTests.dll", "src\Dropbox.FunctionalTests\bin\$env:CONFIGURATION\Skahal.Infrastructure.Repositories.FunctionalTests.dll"" /noshadow" -filter:"+[Skahal.Infrastructure.Repositories*]*" -output:opencoverCoverage.xml
+  - ps: .\src\packages\coveralls.net.0.5.0\csmacnz.Coveralls.exe --opencover -i opencoverCoverage.xml --repoToken $env:COVERALLS_REPO_TOKEN --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_JOB_ID	
+
+# create nuget packages =]
+after_build:
+  - nuget pack .\src\EntityFramework\EntityFramework.csproj -Version %GitVersion_NuGetVersionV2% -OutputDirectory .\src\nuget
+  - nuget pack .\src\MongoDB\MongoDB.csproj -Version %GitVersion_NuGetVersionV2% -OutputDirectory .\src\nuget
+  - nuget pack .\src\GData\GData.csproj -Version %GitVersion_NuGetVersionV2% -OutputDirectory .\src\nuget
+  - nuget pack .\src\Dropbox\Dropbox.csproj -Version %GitVersion_NuGetVersionV2% -OutputDirectory .\src\nuget
+
+# push artifacts
+artifacts:
+  - path: .\src\nuget\*.nupkg
+
+deploy:
+  - provider: GitHub
+    tag: v$(GitVersion_SemVer)
+    release: v$(GitVersion_SemVer)
+    auth_token:
+      secure: iHyv/sJYu1rzs66O1fn0FECET2w27wKKUUEzqwvqV4uL5DvlZa7FwpM7LKdxgV6E
+    draft: false
+    prerelease: $(GIT_PRE_RELEASE)
+    artifact: /.*\.nupkg/

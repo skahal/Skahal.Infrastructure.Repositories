@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+	<metadata>
+		<id>Skahal.Infrastructure.Repositories.MongoDB</id>
+		<version>$version$</version>
+		<title>Skahal.Infrastructure.Repositories.MongoDB</title>
+		<authors>Skahal</authors>
+		<owners>g1acomell1, eduardobursa</owners>
+		<projectUrl>https://github.com/skahal/Skahal.Infrastructure.Repositories</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Skahal.Infrastructure.Framework.Repositories.IRepository's MongoDB implementation.</description>
+		<releaseNotes></releaseNotes>
+		<copyright>Copyright 2013</copyright>
+		<tags>mongodb repository</tags>
+		<dependencies>
+			<dependency id="Skahal.Infrastructure.Framework" version="0.5.9" />
+			<dependency id="mongocsharpdriver" version="1.8.3" />
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="bin\Release\Skahal.Infrastructure.Repositories.MongoDB.dll" target="lib\net40\" />
+		<file src="bin\Release\Skahal.Infrastructure.Repositories.MongoDB.pdb" target="lib\net40\" />
+		<file src="bin\Release\Skahal.Infrastructure.Repositories.MongoDB.xml" target="lib\net40\" />
+	</files>
+</package>
