@@ -12,19 +12,14 @@ In others words, you can use this library for developement any kind of software:
 
 ## Implementations / Flavors ##
 
-<style>.nuget {background-color: #202020; border: 4px solid #C0C0C0; border-radius: 5px; box-shadow: 2px 2px 3px #6E6E6E; color: #E2E2E2;display: block; font: 1.5em/1.5em 'andale mono','lucida console',monospace; overflow:auto;padding: 15px;}
-</style>
-
 **MongoDB** ( `MongoDBRepositoryBase` )
 
 [![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.MongoDB.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.MongoDB/)
 [![NuGet](https://img.shields.io/nuget/dt/Skahal.Infrastructure.Repositories.MongoDB.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.MongoDB/)
 
-<div class="nuget">
-	<span>
-		PM&gt; Install-Package Skahal.Infrastructure.Repositories.MongoDB
-	</span>
-</div>
+```console
+PM> Install-Package Skahal.Infrastructure.Repositories.MongoDB
+```
 
 ----------
 
@@ -33,11 +28,9 @@ In others words, you can use this library for developement any kind of software:
 [![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.EntityFramework.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.EntityFramework/)
 [![NuGet](https://img.shields.io/nuget/dt/Skahal.Infrastructure.Repositories.EntityFramework.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.EntityFramework/)
 
-<div class="nuget">
-	<span>
-		PM&gt; Install-Package Skahal.Infrastructure.Repositories.EntityFramework
-	</span>
-</div>
+```console
+PM> Install-Package Skahal.Infrastructure.Repositories.EntityFramework
+```
 
 ----------
 
@@ -46,11 +39,9 @@ In others words, you can use this library for developement any kind of software:
 [![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.GData.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.GData/)
 [![NuGet](https://img.shields.io/nuget/dt/Skahal.Infrastructure.Repositories.GData.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.GData/)
 
-<div class="nuget">
-	<span>
-		PM&gt; Install-Package Skahal.Infrastructure.Repositories.GData
-	</span>
-</div>
+```console
+PM> Install-Package Skahal.Infrastructure.Repositories.GData
+```
 
 ----------
 
@@ -59,11 +50,9 @@ In others words, you can use this library for developement any kind of software:
 [![NuGet](https://img.shields.io/nuget/v/Skahal.Infrastructure.Repositories.Dropbox.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.Dropbox/)
 [![NuGet](https://img.shields.io/nuget/dt/Skahal.Infrastructure.Repositories.Dropbox.svg)](https://www.nuget.org/packages/Skahal.Infrastructure.Repositories.Dropbox/)
 
-<div class="nuget">
-	<span>
-		PM&gt; Install-Package Skahal.Infrastructure.Repositories.Dropbox
-	</span>
-</div>
+```console
+PM> Install-Package Skahal.Infrastructure.Repositories.Dropbox
+```
 
 ## Features ##
 
