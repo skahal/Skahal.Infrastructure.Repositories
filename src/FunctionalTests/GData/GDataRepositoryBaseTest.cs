@@ -1,5 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using NUnit.Framework;
 using Skahal.Infrastructure.Framework.Repositories;
 using Skahal.Infrastructure.Repositories.GData;
@@ -13,6 +16,7 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
         [Category("GData")]
         public void PersistNewItem_Item_PersistedOnGData()
         {
+
             var unitOfWork = new MemoryUnitOfWork();
             var target = CreateTarget();
             target.SetUnitOfWork(unitOfWork);
@@ -78,10 +82,14 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 
         private static GDataRepositoryBase<SimpleDataStub> CreateTarget()
         {
-            var username = Environment.GetEnvironmentVariable("GDataUsername");
-            var password = Environment.GetEnvironmentVariable("GDataPassword");
+            var clientEmail = Environment.GetEnvironmentVariable("GDataClientEmail");
+            
+            // Divided in two variables because Windows Environment variable max length is 2047.
+            var privateKey = Convert.FromBase64String(
+                Environment.GetEnvironmentVariable("GDataPrivateKeyBytesPart1") + 
+                Environment.GetEnvironmentVariable("GDataPrivateKeyBytesPart2"));
 
-            return new GDataRepositoryBase<SimpleDataStub>("GDataRepositoryBaseTest", username, password);
+            return new GDataRepositoryBase<SimpleDataStub>("GDataRepositoryBaseTest", clientEmail, privateKey);
         }
     }
 }

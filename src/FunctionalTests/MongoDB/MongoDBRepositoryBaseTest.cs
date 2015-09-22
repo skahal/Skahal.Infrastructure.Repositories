@@ -38,8 +38,8 @@ namespace Skahal.Infrastructure.Repositories.FunctionalTests
 							"/Applications/mongodb/bin/mongod",
 							Path.Combine(rootDir, "bin/debug/mongodb/mongod"),
 							"mongod",
-							@"C:\MongoDB\bin\mongod.exe"
-						};
+                            @"C:\Program Files\MongoDB\Server\3.0\bin\mongod.exe"
+                        };
 
 						var dbPath = Path.Combine(rootDir, "db");
 						var logPath = Path.Combine(dbPath, "db.log");
