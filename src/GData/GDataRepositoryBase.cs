@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using GDataDB;
@@ -25,8 +26,8 @@ namespace Skahal.Infrastructure.Repositories.GData
         where TEntity : EntityWithIdBase<string>, IAggregateRoot, new()
     {
         #region Fields
-        private string m_userName;
-        private string m_password;
+        private string m_clientEmail;
+        private byte[] m_privateKey;
         private string m_databaseName;
         private string m_tableName;
         private ITable<TEntity> m_table;
@@ -37,10 +38,10 @@ namespace Skahal.Infrastructure.Repositories.GData
         /// Initializes a new instance of the <see cref="GDataRepositoryBase{TEntity}"/> class.
         /// </summary>
         /// <param name="databaseName">The database name. This is the name of spreadsheet that will be created on Google Docs.</param>
-        /// <param name="userName">The Google Docs account user name.</param>
-        /// <param name="password">The Google Docs account password. If you use two-steps-verification, will you need to generated a app specific password.</param>
-        public GDataRepositoryBase(string databaseName, string userName, string password)
-            : this(databaseName, userName, password, null)
+        /// <param name="clientEmail">The Google Docs client email with access to spreadsheet.</param>
+        /// <param name="privateKey">The P12 private key bytes to access the Google Drive API. More info http://stackoverflow.com/a/30497154/956886 .</param>
+        public GDataRepositoryBase(string databaseName, string clientEmail, byte[] privateKey)
+            : this(databaseName, clientEmail, privateKey, null)
         {
         }
 
@@ -49,14 +50,14 @@ namespace Skahal.Infrastructure.Repositories.GData
         /// Initializes a new instance of the <see cref="GDataRepositoryBase{TEntity}"/> class.
         /// </summary>
         /// <param name="databaseName">The database name. This is the name of spreadsheet that will be created on Google Docs.</param>
-        /// <param name="userName">The Google Docs account user name.</param>
-        /// <param name="password">The Google Docs account password. If you use two-steps-verification, will you need to generated a app specific password.</param>
+        /// <param name="clientEmail">The Google Docs client email with access to spreadsheet.</param>
+        /// <param name="privateKey">The P12 private key bytes to access the Google Drive API. More info http://stackoverflow.com/a/30497154/956886 .</param>
         /// <param name="tableName">The default name of table (sheet) is the entity name, but you can choose your own with this argument.</param>
-        public GDataRepositoryBase(string databaseName, string userName, string password, string tableName)
+        public GDataRepositoryBase(string databaseName, string clientEmail, byte[] privateKey, string tableName)
         {
             m_databaseName = databaseName;
-            m_userName = userName;
-            m_password = password;
+            m_clientEmail = clientEmail;
+            m_privateKey = privateKey;
 
             if (String.IsNullOrEmpty(tableName))
             {
@@ -196,7 +197,8 @@ namespace Skahal.Infrastructure.Repositories.GData
         {
             if (m_table == null)
             {
-                var client = new DatabaseClient(m_userName, m_password);
+                var client = new DatabaseClient(m_clientEmail, m_privateKey);
+
                 var db = client.GetDatabase(m_databaseName) ?? client.CreateDatabase(m_databaseName);
 
                 m_table = db.GetTable<TEntity>(m_tableName) ?? db.CreateTable<TEntity>(m_tableName);
